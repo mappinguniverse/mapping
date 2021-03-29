@@ -1,0 +1,362 @@
+---
+title: "Country details in mapping"
+output: 
+  rmarkdown::html_vignette:
+    keep_md: true 
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{Country details in mapping}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\usepackage[utf8]{inputenc}
+---
+
+
+
+
+The CRAN version can be loaded as follows:
+```{r, message = FALSE}
+library('mapping')
+```
+
+or the development version from GitHub:
+
+```{r, message = FALSE, eval=FALSE}
+remotes::install_github('dataallaround/mapping')
+```
+
+
+## World
+
+
+The worldwide geographical aggregates nomenclature  are the following:
+
+| Function argument | Aggregates | Level | 
+------------|------------| -------------|
+| "continent" | Continents | level 0 |
+| "regions" | World regions | level 1 |
+| "subregion" | World subregions | level 2 |
+| "country" | Countries | level 3 |
+
+where **level 0** is the largest unit (continent), and **level 4** the smallest unit.
+
+Countries can be subdivided in other aggregates, based on type of economics or development
+
+| Function argument | Type |  
+------------|------------| 
+| "type" | Classification based on the type of political entity | 
+| "type_economy" | Classification based on the type of development | 
+| "type_income" | Classification based on the type of income | 
+
+and based on the belonging to some international organisation
+
+| Function argument | Type |  
+------------|------------| 
+| "nato" | If is a NATO country | 
+| "ocde" | If is a ICDE country | 
+
+
+```{r, echo=FALSE}
+DiagrammeR::grViz("
+  digraph graph2 {
+  
+  graph [layout = dot, rankdir = LR]
+  
+  # node definitions with substituted label text
+  node [shape = oval]
+  a [label = 'continent']
+  b [label = 'regions']
+  c [label = 'subregion']
+  d [label = 'country']
+
+  
+  d -> c -> b -> a
+  }
+  
+  ",height = 100)
+```
+
+
+`Level` may have names expressed in different way. The package provides:
+
+|  Names | Code |  
+------------|------------| 
+| Country names | `country` | 
+| iso2 code | `iso2` | 
+| iso3 code | `iso3` | 
+| iso3 numeric | `iso3_numeric` |
+| iso3 United Nations  | `iso3_un` |
+| iso2 World Bank  | `iso2_wb` |
+| Formal name  | `name_formal` |
+| World Bank name  | `name_wb` |
+
+This can be specified in `matchWith` argument, depending on the **ids** format in the input data. 
+
+
+```{r}
+wr_continent <- loadCoordWR(unit = "continent", res = "hi")
+mappingWR(wr_continent)
+```
+
+```{r}
+wr_regions <- loadCoordWR(unit = "region", res = "hi")
+mappingWR(wr_regions)
+```
+
+
+```{r}
+wr_subregion <- loadCoordWR(unit = "subregion", res = "hi")
+mappingWR(wr_subregion)
+```
+
+```{r}
+wr_country <- loadCoordWR(unit = "country", res = "hi")
+mappingWR(wr_country)
+```
+
+
+```{r}
+wr_nato <- loadCoordWR(unit = "nato", res = "hi")
+mappingWR(wr_nato)
+```
+
+
+
+```{r}
+wr_ocde <- loadCoordWR(unit = "ocde", res = "hi")
+mappingWR(wr_ocde)
+```
+
+
+
+
+## European Union
+
+
+The European geographical aggregates nomenclature, called NUTS (Nomenclature des unités territoriales statistiques)) are the following:
+
+| Function argument | Aggregates | Level | 
+------------|------------| -------------|
+| "nuts0" | European countries | level 0 |
+| "nuts1" | European divisions for each country| level 1 |
+| "nuts2" | European regions for each country| level 2 |
+| "nuts3" | European municipalities for each country| level 3 |
+
+where **level 0** is the largest unit (country), and **level 4** the smallest unit. In addition Urban Audit ("urau") are also provided.
+
+```{r, echo=FALSE}
+DiagrammeR::grViz("
+  digraph graph2 {
+  
+  graph [layout = dot, rankdir = LR]
+  
+  # node definitions with substituted label text
+  node [shape = oval]
+  a [label = 'nuts0']
+  b [label = 'nuts1']
+  c [label = 'nuts2']
+  d [label = 'nuts3']
+
+  
+  d -> c -> b -> a
+  }
+  
+  ",height = 100)
+```
+
+The diagram show the hierarchy used in the `EU()` to build the object to map. Smaller aggregate/levels have all the information of the bigger aggregates. For example, if we have "nuts2", we have also all the information until the country level, "nuts0".
+
+
+
+Level may have names expressed in different ways. The package provides: 
+
+|  Names | Code |  
+------------|------------| 
+| Nuts names | `nuts` | 
+| Nuts id code | `id` | 
+| iso2 coutry code | `iso2` | 
+| iso3 country code | `iso3` |
+
+This can be specified in `matchWith` argument,depending on the **ids** in the input data.  
+
+
+```{r}
+eu_level0 <- loadCoordEU(unit = "nuts0")
+mappingEU(eu_level0)
+```
+
+```{r}
+eu_level0 <- loadCoordEU(unit = "nuts1")
+mappingEU(eu_level0)
+```
+
+
+```{r}
+eu_level0 <- loadCoordEU(unit = "nuts2")
+mappingEU(eu_level0)
+```
+
+```{r}
+eu_level0 <- loadCoordEU(unit = "nuts3")
+mappingEU(eu_level0)
+```
+
+
+
+## Italy
+
+
+The Italian geographical aggregates nomenclature are the following:
+
+| Function argument | Aggregates | Level | 
+------------|------------| -------------|
+| "none" | country | level 0 |
+| "ripartizione" | Italian divisions | level 1 |
+| "regione" | Italian regions | level 2 |
+| "provincia" | Italian municipalities | level 3 |
+| "comune" | Italian districts | level 4 |
+
+where **level 0** is the largest unit (country), and **level 4** the smallest unit.
+
+```{r, echo=FALSE}
+DiagrammeR::grViz("
+  digraph graph2 {
+  
+  graph [layout = dot, rankdir = LR]
+  
+  # node definitions with substituted label text
+  node [shape = oval]
+  a [label = 'country']
+  b [label = 'ripartizione']
+  c [label = 'regione']
+  d [label = 'provincia']
+  e [label = 'comune']
+
+  
+  e -> d -> c -> b -> a
+  }
+  
+  ",height = 100)
+```
+
+The diagram show the hierarchy used in the `IT()` to build the object to map. Smaller aggregate/levels have all the information of the bigger aggregates. For example, if we have "comune", we have also all the information until the first level, "ripartizione".
+
+```{r}
+it_level0 <- loadCoordIT(unit = "none")
+mappingIT(it_level0)
+```
+
+```{r}
+it_level1 <- loadCoordIT(unit = "ripartizione")
+mappingIT(it_level1)
+```
+
+
+```{r}
+it_level2 <- loadCoordIT(unit = "regione")
+mappingIT(it_level2)
+```
+
+```{r}
+it_level3 <- loadCoordIT(unit = "provincia")
+mappingIT(it_level3)
+```
+
+
+```{r}
+it_level4 <- loadCoordIT(unit = "comune")
+mappingIT(it_level4)
+```
+
+Note that, given the government rule, the "provincia" and district may change over the `year`.
+
+
+## USA
+
+The USA geographical aggregates nomenclature are the following:
+
+| Function argument | Aggregates | Level | 
+------------|------------| -------------|
+| "country" | USA country | level 0 |
+| "region" | USA regions | level 1 |
+| "division" | USA division | level 2 |
+| "state" | USA states | level 3 |
+| "county" | USA counties | level 4 |
+| "district" | USA districts | level 5 |
+| district_county| USA district in each county | level 6|
+
+where **level 0** is the largest unit (country), and **level 6** the smallest unit. In addition Urban Area ("urban_area"") are also provided.
+
+```{r, echo=FALSE}
+DiagrammeR::grViz("
+  digraph graph2 {
+  
+  graph [layout = dot, rankdir = LR]
+  
+  # node definitions with substituted label text
+  node [shape = oval]
+  a [label = 'country']
+  b [label = 'region']
+  c [label = 'region']
+  d [label = 'state']
+  e [label = 'county']
+  f [label = 'district']
+  g [label = 'district_county']
+
+  
+  g -> f -> e -> d -> c -> b -> a
+  }
+  
+  ",height = 100)
+```
+
+The diagram show the hierarchy used in the `US()` to build the object to map. Smaller aggregate/levels have all the information of the bigger aggregates. For example, if we have "county", we have also all the information until the states level, "state".
+
+Level may have names expressed in different way. The package provides:
+
+|  Names | Code |  
+------------|------------| 
+| Names | `name` | 
+| id | `id` | 
+| Numeric code | `number` | 
+
+This can be specified in `matchWith` argument, depending on the **ids** in the input data.
+
+
+
+```{r}
+us_level0 <- loadCoordUS(unit = "country")
+mappingUS(us_level0)
+```
+
+```{r}
+us_level1 <- loadCoordUS(unit = "region")
+mappingUS(us_level1, type = "interactive")
+```
+
+```{r}
+us_level2 <- loadCoordUS(unit = "division")
+mappingUS(us_level2, type = "interactive")
+```
+
+```{r}
+us_level3 <- loadCoordUS(unit = "state")
+mappingUS(us_level3, type = "interactive")
+```
+
+```{r}
+us_level4 <- loadCoordUS(unit = "county")
+mappingUS(us_level4, type = "interactive")
+```
+
+```{r}
+us_level5 <- loadCoordUS(unit = "district")
+mappingUS(us_level5, type = "interactive")
+```
+
+```{r}
+us_level6 <- loadCoordUS(unit = "district_county")
+mappingUS(us_level6, type = "interactive")
+```
+
+
+

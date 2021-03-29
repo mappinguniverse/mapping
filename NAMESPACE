@@ -1,0 +1,42 @@
+
+importFrom("utils", "packageVersion", "download.file")
+importFrom("graphics", "par")
+
+
+importFrom("dplyr", "left_join")
+importFrom("dplyr", "distinct")
+
+#importFrom("sf", "read_sf", "st_buffer", "st_transform", "st_geometry", "st_crs", "st_as_sf")
+
+import("tmap", "ggplot2", "cartography", "sf",
+       "rgdal", "stats", "leaflet", "tmaptools", "viridisLite", "htmltools", "leafpop")
+
+#import("jsonlite", "geojsonio")
+
+importFrom("grid", "viewport")
+importFrom("httr", "GET", "http_error")
+importFrom("curl", "has_internet")
+importFrom("leafsync", "sync")
+importFrom("mapview", "mapview")
+importFrom("stringr", "str_length")
+importFrom("utils", "write.csv")
+importFrom("jsonlite","toJSON")
+importFrom("geojsonio","geojson_write")
+
+
+import("leaflet")
+
+export("mapPalette")
+export("saveObj")
+
+export("mapping")
+export("mappingIT","mappingEU", "mappingWR", "mappingUS")
+#export("mappingIT_interactive","mappingEU_interactive", "mappingWR_interactive", "mappingUS_interactive", "mapping_interactive")
+
+export("loadCoordIT", "loadCoordEU", "loadCoordWR", "loadCoordUS")
+export("checkNamesIT", "checkNamesEU", "checkNamesWR", "checkNamesUS")
+export("IT", "EU", "WR", "US")
+
+export("getNamesIT", "getNamesEU", "getNamesWR", "getNamesUS")
+
+export("mapping.options", "mapping.options.reset")
