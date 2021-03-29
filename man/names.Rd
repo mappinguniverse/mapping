@@ -22,8 +22,8 @@ data("namesUS")
 \details{Look at \code{\link{getNamesWR}}, \code{\link{getNamesEU}}, \code{\link{getNamesIT}}, and \code{\link{getNamesUS}}}
 
 \source{
-\url{https://datacatalog.worldbank.org}, \url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/countries}, \url{https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html}, \url{https://www.istat.it/it/archivio/222527}
-}
+\url{https://datacatalog.worldbank.org}, \url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/countries}, \url{https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html}, Istat}
+
 
 
 \examples{

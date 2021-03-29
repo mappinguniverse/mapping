@@ -78,8 +78,6 @@ str(popUS)
 ## Load coordinates and check names
 
 
-
-
 Coordinates can be separately downloaded using this specific functions
 
 
@@ -101,22 +99,15 @@ The `unit` argument in the `load` functions, indicates the type of statistical u
 ```{r}
 library(tmap)
 tm_shape(coord_eu) + tm_borders()
-
 ```
-
 
 Returning an object of class `sf`, we can also use the mapping function available in the other R packages. 
 
-
-
-
-
 Note that, the data are downloaded from an online repository, and then an internet connection should be preferred. Nevertheless, if the `use_internet` argument set to `FALSE`, we will get the coordinates locally available in the package.
-
 
 `checkNames` functions will return the nomatching names:
 
-```{r}
+```{r, eval=FALSE}
 checkNamesIT(popIT$ID, unit = "provincia")
 ```
 
@@ -143,7 +134,6 @@ then, the coordinates are added as follows:
 ```{r}
 it <- IT(data = popIT, unit = "provincia", year = "2018",colID = "ID")
 ```
-
 
 
 We have to specify the type of statistical unit, the column containing the ids and, if necessary, the year of the subdivision, and the functions will automatically download the coordinates and link them to the data.
@@ -273,12 +263,14 @@ mappingUS(us)
 
 ```{r}
 mappingUS(us, var = "population")
-mappingUS(us, var = "population", options = mapping.options(nclass = 10, legend.portrait = FALSE))
 
 mappingUS(us, var = "population", add_text = "state_id",
           options = mapping.options(nclass = 10, legend.portrait = FALSE))
 ```
 
+```{r, eval=FALSE}
+mappingUS(us, var = "population", options = mapping.options(nclass = 10, legend.portrait = FALSE))
+```
 
 
 The `facets` argument returns the small multiples. 
@@ -307,20 +299,20 @@ mappingEU(eu, var = "total", type = "interactive")
 
 ```
 
-```{r}
+```{r, eval=FALSE}
 mappingEU(eu, var = "total", type = "interactive",
                       subset = ~I(country == "Spain" | country == "Italy"))
 ```
 
 or aggregating for countries ("nuts0")
 
-```{r}
+```{r, eval=FALSE}
 mappingEU(eu, var = "total", type = "interactive",
                       aggregation_unit = "nuts0")
 ```
 
 Multiple variable will provide a single interactive map with different layers:
-```{r}
+```{r, eval=FALSE}
 mappingEU(eu, var = c("male","female"), type = "interactive")
 ```
 
@@ -399,12 +391,16 @@ mappingIT(data = it, var = c("maschi", "femmine"))
 mappingIT(data = it, var = c("maschi", "femmine"), options = mapping.options(palette.cont = c("Greens", "Blues"), legend.position = c("left","bottom")))
 
 mappingIT(data = it, var = "ripartizione")
-mappingIT(data = it, var = "totale", add_text = "code")
+
 
 ```
 
+```{r, eval=FALSE}
+mappingIT(data = it, var = "totale", add_text = "code")
+```
 
-```{r}
+
+```{r, eval=FALSE}
 mappingIT(data = it, var = "totale", type = "interactive")
 mappingIT(data = it, var = "totale", type = "interactive",
           options = mapping.options(legend.position = c("left","bottom")))
@@ -441,16 +437,24 @@ mappingIT(data = it, var = "totale", aggregation_unit = "regione")
 mappingIT(data = it, var = "totale", 
           aggregation_unit = "ripartizione", 
           aggregation_fun = function(x) sum(x, na.rm = TRUE))
-mappingIT(data = it, var = "totale", 
-          aggregation_unit = "ripartizione", 
-          aggregation_fun = function(x) sum(x, na.rm = TRUE),
-          type = "interactive")
-mappingIT(data = it, var = "totale", 
-          aggregation_unit = "regione", facets = "regione")
+
 
 mappingIT(data = it, var = "totale", 
           aggregation_unit = "regione", facets = "ripartizione")
 ```
+
+```{r, eval=FALSE}
+mappingIT(data = it, var = "totale", 
+          aggregation_unit = "ripartizione", 
+          aggregation_fun = function(x) sum(x, na.rm = TRUE),
+          type = "interactive")
+
+
+mappingIT(data = it, var = "totale", 
+          aggregation_unit = "regione", facets = "regione")
+
+```
+
 
 
 ```{r}
@@ -462,14 +466,17 @@ str(euNuts2,1)
 mappingEU(data = euNuts2, var = "total", 
           aggregation_unit = "nuts0", aggregation_fun = mean)
 
+```
+
+```{r}
 mappingEU(data = euNuts2, var = "total", 
           aggregation_unit = "nuts0", aggregation_fun = sum)
 mappingEU(data = euNuts2, var = "total", subset = ~I(iso3 == "FRA"),
           aggregation_unit = "nuts1", aggregation_fun = sum, facets = "nuts1")
-
 ```
 
-```{r}
+
+```{r, eval = FALSE}
 data("popWR")
 popWR <- popWR
 wr <- WR(data = popWR, colID = "country_code",
@@ -489,31 +496,13 @@ mappingWR(data = wr, var = "total",
 ```
 
 
-### "choro.cart"
+<!-- ### "choro.cart" -->
 
-```{r}
-mappingIT(data = it, var = "totale", typeStatic = "choro.cart")
-mappingIT(data = it, var = c("maschi", "femmine"), typeStatic = "choro.cart")
-mappingIT(data = it, var = c("maschi", "femmine"), typeStatic = "choro.cart", mapping.options(palette.cont = c("Greens", "Blues")))
-```
-
-
-### "typo"
-
-```{r}
-mappingIT(data = it, var = "ripartizione", typeStatic = "typo")
-mappingIT(data = it, var = c("maschi", "femmine"), typeStatic = "typo")
-mappingIT(data = it, var = c("maschi", "femmine"), typeStatic = "typo", mapping.options(palette.cont = c("Greens", "Blues")))
-```
-
-
-### "bar"
-
-```{r}
-mappingIT(data = it, var = "totale", typeStatic = "bar")
-```
-
-
+<!-- ```{r} -->
+<!-- mappingIT(data = it, var = "totale", typeStatic = "choro.cart") -->
+<!-- mappingIT(data = it, var = c("maschi", "femmine"), typeStatic = "choro.cart") -->
+<!-- mappingIT(data = it, var = c("maschi", "femmine"), typeStatic = "choro.cart", mapping.options(palette.cont = c("Greens", "Blues"))) -->
+<!-- ``` -->
 
 
 

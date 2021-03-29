@@ -74,6 +74,8 @@ cr <- left_join(coords, popIT, by = c( "provincia" = "ID"))
 ###############
 
 mapping(cr)
+
+\dontrun{
 mapping(cr, var = "maschi")
 
 
@@ -98,4 +100,5 @@ mapping(nc, var = "AREA", type = "interactive")
 
 
 
+}
 }
