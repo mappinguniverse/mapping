@@ -112,7 +112,7 @@ mappingEU(data = eu1)
 ###############
 # Interactive #
 ###############
-
+\donttest{
 mappingEU(data = euNuts2, var = "total", type = "interactive")
 mappingEU(data = euNuts2, var = c("male","female"), type = "interactive")
 
@@ -121,7 +121,7 @@ mappingEU(data = euNuts2, type = "interactive",
 mappingEU(data = euNuts2, var = "total", type = "interactive",
           subset = ~I(nuts0_id == "ES"))
 
-\dontrun{
+
 mappingEU(data = euNuts2, var = "total", type = "interactive")
 
 mappingEU(data = euNuts2, var = "total", type = "interactive",

@@ -112,7 +112,7 @@ mappingIT(data = it1)
 
 mappingIT(data = it, var = "totale", type = "interactive")
 
-\dontrun{
+\donttest{
 mappingIT(data = it, var = c("maschi", "femmine"), type = "interactive")
 
 

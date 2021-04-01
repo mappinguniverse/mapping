@@ -29,7 +29,7 @@ getNamesUS(year = "2018",
 
 getNamesUS()
 
-\dontrun{
+\donttest{
 getNamesUS(unit = "state")
 getNamesUS(unit = "state", all_levels = FALSE)
 

@@ -75,7 +75,7 @@ cr <- left_join(coords, popIT, by = c( "provincia" = "ID"))
 
 mapping(cr)
 
-\dontrun{
+\donttest{
 mapping(cr, var = "maschi")
 
 

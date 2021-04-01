@@ -825,6 +825,9 @@ mapping_choro <- function(data, var = NULL,
   #   data <- st_transform(data, crs = crs)
   # }
 
+  oldpar <- par(no.readonly = TRUE)
+  on.exit(par(oldpar))
+
   if(isFALSE(options$legend.show))
   {
     lgpos <- "n"
@@ -991,6 +994,8 @@ mapping_typo <- function(data, var = NULL,
   #   data <- st_transform(data, crs = crs)
   # }
 
+  oldpar <- par(no.readonly = TRUE)
+  on.exit(par(oldpar))
 
   if(isFALSE(options$legend.show))
   {
@@ -1131,6 +1136,9 @@ mapping_bar <- function(data, var = NULL,
   # {
   #   data <- st_transform(data, crs = crs)
   # }
+
+  oldpar <- par(no.readonly = TRUE)
+  on.exit(par(oldpar))
 
   if(is.null(var))
   {

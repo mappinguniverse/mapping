@@ -72,7 +72,7 @@ tm_shape(US_coords) + tm_borders()
 library(mapview)
 mapview(US_coords)
 
-\dontrun{
+\donttest{
 coords_us<- loadCoordUS(unit = "state", unit_subset = c("Florida", "California"))
 }
 }

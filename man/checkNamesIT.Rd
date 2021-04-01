@@ -49,7 +49,7 @@ data("popIT")
 ck <- checkNamesIT(popIT$ID, unit = "provincia")
 str(ck)
 
-\dontrun{
+\donttest{
 ck <- checkNamesIT(popIT$ID, unit = "provincia", return_logical = TRUE)
 str(ck)
 }

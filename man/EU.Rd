@@ -78,6 +78,9 @@ euNuts2 <- EU(data = popEU, colID = "GEO",
               unit = "nuts2",matchWith = "id")
 str(euNuts2)
 
+\donttest{
+
+
 euNuts2_1 <- EU(data = popEU, colID = "GEO",
                 unit = "nuts2",matchWith = "id",
                 add = ~I(male/total) + I(female/total))
@@ -88,6 +91,6 @@ euNuts2_2 <- EU(data = popEU, colID = "GEO",
                 add = ~I(male/total) + I(female/total),
                 new_var_names = c("Per_Male", "Per_Female"))
 str(euNuts2_2)
-
+}
 }
 

@@ -16,6 +16,7 @@ saveObj(obj, name, as = c("RData", "csv", "json", "geojson", "shp"), ...)
   \item{\dots}{further arguments}
 }
 
+\value{No return value.}
 
 \examples{
 

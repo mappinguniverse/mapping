@@ -14,4 +14,4 @@ mapPalette(type, nclass = NULL )
   \item{nclass}{number of classes}
 }
 
-
+\value{A character vector with palettes.}

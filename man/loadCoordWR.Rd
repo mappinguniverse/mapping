@@ -61,7 +61,7 @@ str(WR_ocde, 1)
 WR_continent = loadCoordWR(unit = "continent",res = "low")
 str(WR_continent, 1)
 
-\dontrun{
+\donttest{
 
 WR_type_income = loadCoordWR(unit = "type_income",res = "low")
 str(WR_type_income, 1)

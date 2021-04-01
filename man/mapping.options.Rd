@@ -113,9 +113,10 @@ Available options are the following:
 \item{\code{crs = NULL}}{}
 }
 
-Options may be reset usinng \code{mapping.options()}.
+Options may be reset using \code{mapping.options()}.
 }
 
+\value{Return a list with options.}
 
 \references{
 Tennekes M (2018). “tmap: Thematic Maps in R.” _Journalstatisticaltical Software_, *84*(6), 1-39. doi: 10.18637/jss.v084.i06 (URL: https://doi.org/10.18637/jss.v084.i06).

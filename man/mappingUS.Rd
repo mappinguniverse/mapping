@@ -93,7 +93,7 @@ mappingUS(data = us, var = "population",
 
 mappingUS(data = us, var = "population", typeStatic = "choro.cart")
 
-
+\donttest{
 ###############
 # Interactive #
 ###############
@@ -103,5 +103,6 @@ mappingUS(data = us, var = "population", type = "interactive")
 mappingUS(data = us, var = "population", type = "interactive",
                       subset = ~I(id == "california" | id == "texas" | id == "new york" ))
 
+}
 }
 

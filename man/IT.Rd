@@ -75,7 +75,7 @@ it <- IT(data = popIT, unit = "provincia", year = "2019")
 
 ### Adding two varaibles
 
-\dontrun{
+\donttest{
 it2 <- IT(data = popIT, unit = "provincia", year = "2019",
           add = ~I(maschi/totale) + I(femmine/totale) )
 

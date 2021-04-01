@@ -59,7 +59,7 @@ tm_shape(IT_coords) + tm_borders()
 library(mapview)
 mapview(IT_coords)
 
-\dontrun{
+\donttest{
 ## Italy
 
 IT_coords = loadCoordIT()
