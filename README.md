@@ -28,24 +28,3 @@ The main functions, generic functions and some examples are included in the vign
 ```{r}
 vignette("A journey into mapping")
 ```
-
-A graphical list of the available plots can be look at
-
-```{r}
-vignette("Type of plots in mapping")
-
-```
-
-Details on single country functions are also available are
-
-
-```{r}
-vignette("mapping World")
-vignette("mapping European Union")
-vignette("mapping Italy")
-vignette("mapping USA")
-```
-
-
-
-## 
