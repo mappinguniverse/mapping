@@ -5,6 +5,7 @@ importFrom("graphics", "par")
 
 importFrom("dplyr", "left_join")
 importFrom("dplyr", "distinct")
+importFrom("graphics", "plot")
 
 #importFrom("sf", "read_sf", "st_buffer", "st_transform", "st_geometry", "st_crs", "st_as_sf")
 

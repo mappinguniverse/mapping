@@ -7,7 +7,7 @@ output:
 vignette: >
   %\VignetteIndexEntry{A journey into mapping}
   %\VignetteEngine{knitr::rmarkdown}
-  %\usepackage[utf8]{inputenc}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include=FALSE}

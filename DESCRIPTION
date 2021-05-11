@@ -1,7 +1,7 @@
 Package: mapping
 Type: Package
-Version: 1.0
-Date: 2021-03-29
+Version: 1.2
+Date: 2021-05-05
 Title: Automatic Download, Linking, Manipulating Coordinates for Maps
 Description: Maps are an important tool to visualise variables distribution across different spatial object. The mapping process require to link the data with coordinates and then generate the correspondent map. This package provide coordinates, linking and mapping functions for an automatic, flexible and easy approach of mapping workflow of different geographical statistical unit.Geographical coordinates are provided in the package and automatically linked with the input data to generate maps with internal provided functions or external functions.provide an easy, flexible and automatic approach to potentially download updated coordinates, to link statistical units with coordinates and to aggregate variables based on the spatial hierarchy of units. The object returned from the package can be used for thematic maps with the build-in functions provided in mapping or with other packages already available.
 Authors@R: c(person("Alessio", "Serafini", role = c("aut", "cre"),
@@ -16,12 +16,12 @@ Imports: tmap (>= 2.3-2), cartography (>= 2.3.0), graphics(>= 3.6.1),
         4.3), htmltools(>= 0.5.0), leafpop(>= 0.0.5), leafsync(>=
         0.1.0), mapview(>= 2.7.8), geojsonio(>= 0.9.2), jsonlite(>= 1.7.1),
         stringr(>= 1.4.0)
-Suggests: knitr (>= 1.8), DiagrammeR(>= 1.0.6.1), rmarkdown
+Suggests: knitr, DiagrammeR(>= 1.0.6.1), rmarkdown, validate, unrepx
 Repository: CRAN
 URL: https://github.com/serafinialessio/mapping
 BugReports: https://github.com/serafinialessio/mapping/issues
 LazyData: yes
-LazyDataCompression: xy
+LazyDataCompression: xz
 Encoding: UTF-8
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
