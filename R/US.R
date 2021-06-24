@@ -108,7 +108,8 @@ if(download)
 
 
   coord <- st_transform(coord, crs = crs)
-  coord <- suppressMessages(suppressWarnings((st_buffer(coord,0))))
+  # coord <- suppressMessages(suppressWarnings((st_buffer(coord,0))))
+  coord <- st_make_valid(coord)
   class(coord) <- c(class(coord),"US")
   attributes(coord)$unit <- unit
   attributes(coord)$colID <- ifelse(unit == "district_county", "district", unit)

@@ -84,7 +84,8 @@ loadCoordEU <- function(unit = c("nuts0","nuts1", "nuts2", "nuts3", "urau"),
 
 
   coord <- st_transform(coord, crs = crs)
-  coord <- suppressMessages(suppressWarnings((st_buffer(coord,0))))
+  # coord <- suppressMessages(suppressWarnings((st_buffer(coord,0))))
+  coord <- st_make_valid(coord)
   class(coord) <- c(class(coord),"EU")
   attributes(coord)$unit <- unit
   attributes(coord)$colID <- unit

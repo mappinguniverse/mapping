@@ -68,7 +68,7 @@ if(download){
       coord <- read_sf(dsn = paste(tempdir(),file,sep = "/"), as_tibble = FALSE)
     }
     }else{
-      coord <-  get(paste("it_","2020","_",unit, sep = ""), pos = "package:mapping")
+      coord <-  get(paste("it_","2020","_", unit, sep = ""), pos = "package:mapping")
     }
 }
   }else{
@@ -81,7 +81,8 @@ if(download){
 
 
   coord <- st_transform(coord, crs = crs)
-  coord <- suppressMessages(suppressWarnings((st_buffer(coord,0))))
+  # coord <- suppressMessages(suppressWarnings((st_buffer(coord,0))))
+  coord <- st_make_valid(coord)
   class(coord) <- c(class(coord),"IT")
   attributes(coord)$unit <- unit
   attributes(coord)$colID <- unit
