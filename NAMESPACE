@@ -9,7 +9,7 @@ importFrom("graphics", "plot")
 
 #importFrom("sf", "read_sf", "st_buffer", "st_transform", "st_geometry", "st_crs", "st_as_sf")
 
-import("tmap", "ggplot2", "cartography", "sf",
+import("tmap", "ggplot2", "cartography", "sf", "s2",
        "rgdal", "stats", "leaflet", "tmaptools", "viridisLite", "htmltools", "leafpop")
 
 #import("jsonlite", "geojsonio")
