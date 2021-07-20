@@ -35,9 +35,9 @@ export("mappingIT","mappingEU", "mappingWR", "mappingUS", "mappingUK")
 #export("mappingIT_interactive","mappingEU_interactive", "mappingWR_interactive", "mappingUS_interactive", "mapping_interactive")
 
 export("loadCoordIT", "loadCoordEU", "loadCoordWR", "loadCoordUS", "loadCoordUK", "loadCoordDE")
-export("checkNamesIT", "checkNamesEU", "checkNamesWR", "checkNamesUS", "checkNamesUK")
-export("IT", "EU", "WR", "US", "UK")
+export("checkNamesIT", "checkNamesEU", "checkNamesWR", "checkNamesUS", "checkNamesUK", "checkNamesDE")
+export("IT", "EU", "WR", "US", "UK", "DE")
 
-export("getNamesIT", "getNamesEU", "getNamesWR", "getNamesUS", "getNamesUK")
+export("getNamesIT", "getNamesEU", "getNamesWR", "getNamesUS", "getNamesUK", "getNamesDE")
 
 export("mapping.options", "mapping.options.reset")

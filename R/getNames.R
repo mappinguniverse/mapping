@@ -230,3 +230,52 @@ getNamesUK <- function(year = c("2020", "2019"),
 return(out)
 }
 
+
+getNamesDE <- function(unit = c("state","district", "municipal", "municipality"),
+                       all_levels = TRUE)
+{
+  
+  unit <- match.arg(unit, choices = eval(formals(getNamesDE)$unit))
+  
+  dt <-  get("namesDE", pos = "package:mapping")
+
+  if(unit == "state")
+  {
+    if(isFALSE(all_levels))
+    {
+      out <- (dt[[unit]])
+      
+    }else{
+      out <- (dt[[unit]][c("state","code_state", "code" )])
+      # out <- unique(out)
+    }
+    
+  }else if(unit == "district")
+  {
+    if(isFALSE(all_levels))
+    {
+      out <- dt[[unit]]
+    }else{
+      out <- (dt[[unit]][c("state","code_district", "code" )])
+    }
+  }else if(unit == "municipal")
+  {
+    if(isFALSE(all_levels))
+    {
+      out <- dt[[unit]]
+    }else{
+      out <- (dt[[unit]][c("state","code_municipal", "code" )])
+    }
+  }else if(unit == "municipality")
+  {
+    if(isFALSE(all_levels))
+    {
+      out <- dt[[unit]]
+    }else{
+      out <- (dt[[unit]][c("state","code_municipality", "code" )])
+    }
+  }
+  
+  return(out)
+}
+

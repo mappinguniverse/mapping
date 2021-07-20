@@ -91,27 +91,28 @@ loadCoordDE <- function(unit = c("state","district", "municipal", "municipality"
   return(coord)
 }
 
-checkNamesUK <- function(id,
-                         unit = c("country","county"),
-                         year = c("2020","2019"),
-                         matchWith = c("name", "code"),
+checkNamesDE <- function(id,
+                         unit = c("state","district", "municipal", "municipality"),
+                         matchWith = c("name", "code", "code_full"),
                          res = c("500", "20"), return_logical = FALSE, print = TRUE, use_internet = TRUE)
 {
   
-  unit <- match.arg(unit, choices = eval(formals(checkNamesUK)$unit))
-  year <- match.arg(year, choices = eval(formals(checkNamesUK)$year))
-  matchWith <- match.arg(matchWith, choices = eval(formals(checkNamesUK)$matchWith))
-  res <- match.arg(res, choices = eval(formals(checkNamesUK)$res))
-  
+  unit <- match.arg(unit, choices = eval(formals(checkNamesDE)$unit))
+  matchWith <- match.arg(matchWith, choices = eval(formals(checkNamesDE)$matchWith))
+
   
   if(matchWith == "name")
   {
     matchWith <- unit
     
+  }else if(matchWith == "code_full"){
+    
+    matchWith <- paste("code_", unit, sep = "")
+    
   }
   
-  coord <- loadCoordUK(unit = unit, year = year, res = res)
-  Uk <- coord[[matchWith]]
+  coord <- loadCoordDE(unit = unit)
+  De <- coord[[matchWith]]
   
   if(!is.null(ncol(id)))
   {
@@ -120,9 +121,9 @@ checkNamesUK <- function(id,
   }
   
   id <- tolower(id)
-  Uk <- tolower(Uk)
+  De <- tolower(De)
   
-  nomatch <- setdiff(x = id, y = Uk)
+  nomatch <- setdiff(x = id, y = De)
   
   ## NON FUNZIONE. SISTEMARE!!!!!!!!!!!!!!!1
   
@@ -138,7 +139,7 @@ checkNamesUK <- function(id,
   
   if(isTRUE(return_logical))
   {
-    nomatch <- id %in% Uk
+    nomatch <- id %in% De
   }
   
   
@@ -147,34 +148,30 @@ checkNamesUK <- function(id,
 }
 
 
-UK <- function(data, colID = NULL,
-               unit = c("country","county"),
-               year = c("2020","2019"),
-               matchWith = c("name", "code"),
-               res = c("500", "20"), subset = NULL, add = NULL, new_var_names = NULL,
+DE <- function(data, colID = NULL,
+               unit = c("state","district", "municipal", "municipality"),
+               matchWith = c("name", "code", "code_full"), 
+               subset = NULL, add = NULL, new_var_names = NULL,
                aggregation_fun = sum, aggregation_unit = NULL, aggregation_var = NULL,
                facets = NULL, check.unit.names = TRUE, dir = NULL,
                use_cache = TRUE, print = FALSE, use_internet = TRUE, crs = NULL)
 {
   
-  res <- match.arg(res, choices = eval(formals(UK)$res))
-  matchWith <- match.arg(matchWith, choices = eval(formals(UK)$matchWith))
+  matchWith <- match.arg(matchWith, choices = eval(formals(DE)$matchWith))
   
-  if(inherits(data, "UK"))
+  if(inherits(data, "DE"))
   {
     
     colID <- attributes(data)$colID
-    year <- attributes(data)$year
     unit <- attributes(data)$unit
     colName <- colnames(data)[colID]
-    coord <- loadCoordUK(unit = unit, year = year, res = res, use_cache = use_cache, crs = crs)
+    coord <- loadCoordDE(unit = unit, use_cache = use_cache, crs = crs)
     out <- data
     
   }else{
     
-    unit <- match.arg(unit, choices = eval(formals(UK)$unit))
-    year <- match.arg(year, choices = eval(formals(UK)$year))
-    
+    unit <- match.arg(unit, choices = eval(formals(DE)$unit))
+
     data <- data.frame(data, check.names = FALSE)
     
     if(is.null(crs))
@@ -186,6 +183,10 @@ UK <- function(data, colID = NULL,
     if(matchWith == "name")
     {
       matchWith <- unit
+      
+    }else if(matchWith == "code_full"){
+      
+      matchWith <- paste("code_", unit, sep = "")
       
     }
     
@@ -210,15 +211,15 @@ UK <- function(data, colID = NULL,
     
     
     
-    coord <- loadCoordUK(unit = unit, year = year, res = res, use_cache = use_cache, crs = crs, dir = dir)
+    coord <- loadCoordDE(unit = unit, use_cache = use_cache, crs = crs, dir = dir)
     coord[[matchWith]] <- tolower(coord[[matchWith]])
     data[,colID] <- tolower(data[,colID])
     
     
     if(check.unit.names)
     {
-      Uk <- coord[[matchWith]]
-      dd <- setdiff(x = data[,colID, drop = TRUE], y = Uk)
+      De <- coord[[matchWith]]
+      dd <- setdiff(x = data[,colID, drop = TRUE], y = De)
       if(!length(dd) == 0 & isTRUE(print))
       {
         warning(paste("No match found for variables: ", paste(dd, sep = ", ")) , call. = FALSE)
@@ -293,7 +294,7 @@ UK <- function(data, colID = NULL,
     year <- year
     if(any(aggregation_unit%in%c("country", "county")))
     {
-      nm <- getNamesUK(year = year, unit = aggregation_unit, all_levels = TRUE)
+      nm <- getNamesDE(unit = aggregation_unit, all_levels = TRUE)
       
       if(unit == aggregation_unit)
       {
@@ -329,7 +330,7 @@ UK <- function(data, colID = NULL,
                                                                                       FUN = aggregation_fun))
         
         out <- do.call("rbind", dt)
-        class(out) <- c(class(out),"UK")
+        class(out) <- c(class(out),"DE")
         
         colnames(out)[1] <- aggregation_unit
         
@@ -385,7 +386,7 @@ UK <- function(data, colID = NULL,
   }
   
   
-  class(out) <- c(class(out),"UK")
+  class(out) <- c(class(out),"DE")
   attributes(out)$unit <- unit
   attributes(out)$year <- year
   attributes(out)$colID <- colName
