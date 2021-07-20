@@ -83,8 +83,8 @@ loadCoordDE <- function(unit = c("state","district", "municipal", "municipality"
       matchWith <- unit
     }
     
-    unit_subset <- tolower(unit_subset)
-    unt <- tolower(coord[,matchWith, drop = TRUE])
+    unit_subset <- stri_trans_tolower(unit_subset)
+    unt <- stri_trans_tolower(coord[,matchWith, drop = TRUE])
     coord <- coord[ unt %in% unit_subset, ]
   }
   
@@ -212,8 +212,8 @@ DE <- function(data, colID = NULL,
     
     
     coord <- loadCoordDE(unit = unit, use_cache = use_cache, crs = crs, dir = dir)
-    coord[[matchWith]] <- tolower(coord[[matchWith]])
-    data[,colID] <- tolower(data[,colID])
+    coord[[matchWith]] <- stri_trans_tolower(coord[[matchWith]])
+    data[,colID] <- stri_trans_tolower(data[,colID])
     
     
     if(check.unit.names)
@@ -291,7 +291,7 @@ DE <- function(data, colID = NULL,
     }
     
     
-    year <- year
+
     if(any(aggregation_unit%in%c("country", "county")))
     {
       nm <- getNamesDE(unit = aggregation_unit, all_levels = TRUE)
@@ -343,8 +343,8 @@ DE <- function(data, colID = NULL,
         facets_join <- facets
         
       }
-      out[,aggregation_unit] <- tolower(out[,aggregation_unit, drop = TRUE])
-      nm[,aggregation_unit] <- as.character(tolower(nm[,aggregation_unit, drop = TRUE]))
+      out[,aggregation_unit] <- stri_trans_tolower(out[,aggregation_unit, drop = TRUE])
+      nm[,aggregation_unit] <- as.character(stri_trans_tolower(nm[,aggregation_unit, drop = TRUE]))
       out[,aggregation_unit] = as.character(out[,aggregation_unit, drop = TRUE])
       out <- suppressWarnings(left_join(out, nm,c(aggregation_unit)))
       
@@ -388,7 +388,6 @@ DE <- function(data, colID = NULL,
   
   class(out) <- c(class(out),"DE")
   attributes(out)$unit <- unit
-  attributes(out)$year <- year
   attributes(out)$colID <- colName
   
   return(out)
