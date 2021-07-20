@@ -34,7 +34,7 @@ export("mapping")
 export("mappingIT","mappingEU", "mappingWR", "mappingUS", "mappingUK")
 #export("mappingIT_interactive","mappingEU_interactive", "mappingWR_interactive", "mappingUS_interactive", "mapping_interactive")
 
-export("loadCoordIT", "loadCoordEU", "loadCoordWR", "loadCoordUS", "loadCoordUK")
+export("loadCoordIT", "loadCoordEU", "loadCoordWR", "loadCoordUS", "loadCoordUK", "loadCoordDE")
 export("checkNamesIT", "checkNamesEU", "checkNamesWR", "checkNamesUS", "checkNamesUK")
 export("IT", "EU", "WR", "US", "UK")
 
