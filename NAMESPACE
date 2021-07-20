@@ -32,7 +32,7 @@ export("mapPalette")
 export("saveObj")
 
 export("mapping")
-export("mappingIT","mappingEU", "mappingWR", "mappingUS", "mappingUK")
+export("mappingIT","mappingEU", "mappingWR", "mappingUS", "mappingUK", "mappingDE")
 #export("mappingIT_interactive","mappingEU_interactive", "mappingWR_interactive", "mappingUS_interactive", "mapping_interactive")
 
 export("loadCoordIT", "loadCoordEU", "loadCoordWR", "loadCoordUS", "loadCoordUK", "loadCoordDE")

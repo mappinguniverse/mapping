@@ -15,7 +15,7 @@ Imports: tmap (>= 2.3-2), cartography (>= 2.3.0), graphics(>= 3.6.1),
         viridisLite(>= 0.3.0), grid(>= 3.6.1), httr(>= 1.4.1), curl(>=
         4.3), htmltools(>= 0.5.0), leafpop(>= 0.0.5), leafsync(>=
         0.1.0), mapview(>= 2.7.8), geojsonio(>= 0.9.2), jsonlite(>= 1.7.1),
-        stringr(>= 1.4.0), s2(>= 1.0.6), stringi
+        stringr(>= 1.4.0), s2(>= 1.0.6), stringi(>= 1.6.2)
 Suggests: knitr, DiagrammeR(>= 1.0.6.1), rmarkdown, validate, unrepx
 Repository: CRAN
 URL: https://github.com/serafinialessio/mapping
