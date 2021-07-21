@@ -46,7 +46,7 @@ Alessio Serafini
 }
 
 \seealso{
-\code{\link{loadCoordIT}}, \code{\link{loadCoordWR}}
+\code{\link{loadCoordIT}}, \code{\link{loadCoordWR}}, \code{\link{loadCoordDE}}, \code{\link{loadCoordUK}}
 }
 
 

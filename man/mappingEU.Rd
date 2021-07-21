@@ -73,8 +73,8 @@ Returns a map. For \code{tmap} type, the function also returns a \code{tmap} obj
   }
 
 \seealso{
-\code{\link{mappingWR}},\code{\link{mappingIT}}, \code{\link{mappingUS}}
-}
+\code{\link{mappingWR}},\code{\link{mappingIT}},\code{\link{mappingUS}},\code{\link{mappingDE}},\code{\link{mappingUK}}}
+
 
 \examples{
 

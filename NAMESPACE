@@ -32,13 +32,13 @@ export("mapPalette")
 export("saveObj")
 
 export("mapping")
-export("mappingIT","mappingEU", "mappingWR", "mappingUS", "mappingUK", "mappingDE")
+export("mappingIT","mappingEU", "mappingWR", "mappingUS", "mappingUK", "mappingDE", "mappingFR")
 #export("mappingIT_interactive","mappingEU_interactive", "mappingWR_interactive", "mappingUS_interactive", "mapping_interactive")
 
-export("loadCoordIT", "loadCoordEU", "loadCoordWR", "loadCoordUS", "loadCoordUK", "loadCoordDE")
+export("loadCoordIT", "loadCoordEU", "loadCoordWR", "loadCoordUS", "loadCoordUK", "loadCoordDE", "loadCoordFR")
 export("checkNamesIT", "checkNamesEU", "checkNamesWR", "checkNamesUS", "checkNamesUK", "checkNamesDE")
-export("IT", "EU", "WR", "US", "UK", "DE")
+export("IT", "EU", "WR", "US", "UK", "DE", "FR")
 
-export("getNamesIT", "getNamesEU", "getNamesWR", "getNamesUS", "getNamesUK", "getNamesDE")
+export("getNamesIT", "getNamesEU", "getNamesWR", "getNamesUS", "getNamesUK", "getNamesDE", "getNamesFR")
 
 export("mapping.options", "mapping.options.reset")

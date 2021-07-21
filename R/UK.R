@@ -1,14 +1,14 @@
 
 loadCoordUK <- function(unit = c("country","county"),
                         year = c("2020", "2019"),
-                        res = c("500", "20"),
+                        scale = c("500", "20"),
                         unit_subset = NULL, matchWith = NULL, dir = NULL,
                         use_cache = TRUE, use_internet = TRUE, crs = NULL)
 {
   
   year <- match.arg(year, choices = eval(formals(loadCoordUK)$year))
   unit <- match.arg(unit, choices = eval(formals(loadCoordUK)$unit))
-  res <- match.arg(res, choices = eval(formals(loadCoordUK)$res))
+  scale <- match.arg(scale, choices = eval(formals(loadCoordUK)$scale))
   
   if(is.null(crs))
   {
@@ -16,7 +16,7 @@ loadCoordUK <- function(unit = c("country","county"),
   }
   
 
-  file <- paste("uk_",year,"_",unit, "_",res,"m",".geojson", sep = "")
+  file <- paste("uk_",year,"_",unit, "_",scale,"m",".geojson", sep = "")
   nn <- paste(unit,year,sep = "_")
   
   if(use_cache)
@@ -37,21 +37,21 @@ loadCoordUK <- function(unit = c("country","county"),
       
       if(substr(dir, str_length(dir),str_length(dir)) == "/")
       {
-        coord <- get(load(paste(dir, "uk_",year,"_",unit, "_",res,"m",".RData", sep = "")))
+        coord <- get(load(paste(dir, "uk_",year,"_",unit, "_",scale,"m",".RData", sep = "")))
         
       }else{
-        coord <- get(load(paste(dir, "/uk_",year,"_",unit, "_",res,"m",".RData", sep = "")))
+        coord <- get(load(paste(dir, "/uk_",year,"_",unit, "_",scale,"m",".RData", sep = "")))
       }
       
     }else{
       if(internet | use_internet)
       {
         url <- paste("https://raw.githubusercontent.com/dataallaround/geospatial/master/UK/GeoJSON/", file, sep = "")
-        response <- FALSE
-        # resp <- GET(url)
-        # response <- http_error(resp)
+        scaleponse <- FALSE
+        # scalep <- GET(url)
+        # scaleponse <- http_error(scalep)
         
-        if(!response)
+        if(!scaleponse)
         {
           
           temp <- tempfile(pattern = nn, fileext = ".geojson")
@@ -74,7 +74,7 @@ loadCoordUK <- function(unit = c("country","county"),
   
   
   coord <- st_transform(coord, crs = crs)
-  # coord <- suppressMessages(suppressWarnings((st_buffer(coord,0))))
+  # coord <- suppscalesMessages(suppscalesWarnings((st_buffer(coord,0))))
   coord <- st_make_valid(coord)
   class(coord) <- c(class(coord),"UK")
   attributes(coord)$unit <- unit
@@ -99,13 +99,13 @@ checkNamesUK <- function(id,
                          unit = c("country","county"),
                          year = c("2020","2019"),
                          matchWith = c("name", "code"),
-                         res = c("500", "20"), return_logical = FALSE, print = TRUE, use_internet = TRUE)
+                         scale = c("500", "20"), return_logical = FALSE, print = TRUE, use_internet = TRUE)
 {
   
   unit <- match.arg(unit, choices = eval(formals(checkNamesUK)$unit))
   year <- match.arg(year, choices = eval(formals(checkNamesUK)$year))
   matchWith <- match.arg(matchWith, choices = eval(formals(checkNamesUK)$matchWith))
-  res <- match.arg(res, choices = eval(formals(checkNamesUK)$res))
+  scale <- match.arg(scale, choices = eval(formals(checkNamesUK)$scale))
   
 
   if(matchWith == "name")
@@ -114,7 +114,7 @@ checkNamesUK <- function(id,
     
   }
   
-  coord <- loadCoordUK(unit = unit, year = year, res = res)
+  coord <- loadCoordUK(unit = unit, year = year, scale = scale)
   Uk <- coord[[matchWith]]
   
   if(!is.null(ncol(id)))
@@ -155,13 +155,13 @@ UK <- function(data, colID = NULL,
                unit = c("country","county"),
                year = c("2020","2019"),
                matchWith = c("name", "code"),
-               res = c("500", "20"), subset = NULL, add = NULL, new_var_names = NULL,
+               scale = c("500", "20"), subset = NULL, add = NULL, new_var_names = NULL,
                aggregation_fun = sum, aggregation_unit = NULL, aggregation_var = NULL,
                facets = NULL, check.unit.names = TRUE, dir = NULL,
                use_cache = TRUE, print = FALSE, use_internet = TRUE, crs = NULL)
 {
   
-  res <- match.arg(res, choices = eval(formals(UK)$res))
+  scale <- match.arg(scale, choices = eval(formals(UK)$scale))
   matchWith <- match.arg(matchWith, choices = eval(formals(UK)$matchWith))
   
   if(inherits(data, "UK"))
@@ -171,7 +171,7 @@ UK <- function(data, colID = NULL,
     year <- attributes(data)$year
     unit <- attributes(data)$unit
     colName <- colnames(data)[colID]
-    coord <- loadCoordUK(unit = unit, year = year, res = res, use_cache = use_cache, crs = crs)
+    coord <- loadCoordUK(unit = unit, year = year, scale = scale, use_cache = use_cache, crs = crs)
     out <- data
     
   }else{
@@ -214,7 +214,7 @@ UK <- function(data, colID = NULL,
     
     
     
-    coord <- loadCoordUK(unit = unit, year = year, res = res, use_cache = use_cache, crs = crs, dir = dir)
+    coord <- loadCoordUK(unit = unit, year = year, scale = scale, use_cache = use_cache, crs = crs, dir = dir)
     coord[[matchWith]] <- tolower(coord[[matchWith]])
     data[,colID] <- tolower(data[,colID])
     
@@ -256,7 +256,7 @@ UK <- function(data, colID = NULL,
     colnames(coord)[wh_colName] <- colName
     
     
-    out <- suppressMessages(left_join(coord, data, by = colName, keep = FALSE))
+    out <- suppscalesMessages(left_join(coord, data, by = colName, keep = FALSE))
     
   }
   
@@ -318,7 +318,7 @@ UK <- function(data, colID = NULL,
         # out[,aggregation_unit] <- tolower(out[,aggregation_unit, drop = TRUE])
         # nm[,aggregation_unit] <- as.character(tolower(nm[,aggregation_unit, drop = TRUE]))
         # out[,aggregation_unit] = as.character(out[,aggregation_unit, drop = TRUE])
-        # out <- suppressWarnings(left_join(out, nm,aggregation_unit))
+        # out <- suppscalesWarnings(left_join(out, nm,aggregation_unit))
         
       }else{
         
@@ -349,7 +349,7 @@ UK <- function(data, colID = NULL,
       out[,aggregation_unit] <- tolower(out[,aggregation_unit, drop = TRUE])
       nm[,aggregation_unit] <- as.character(tolower(nm[,aggregation_unit, drop = TRUE]))
       out[,aggregation_unit] = as.character(out[,aggregation_unit, drop = TRUE])
-      out <- suppressWarnings(left_join(out, nm,c(aggregation_unit)))
+      out <- suppscalesWarnings(left_join(out, nm,c(aggregation_unit)))
       
       
     }else{
@@ -384,7 +384,7 @@ UK <- function(data, colID = NULL,
   }else{
 
       
-      out <- suppressMessages(left_join(coord, out[,-ncol(out), drop = TRUE]))
+      out <- suppscalesMessages(left_join(coord, out[,-ncol(out), drop = TRUE]))
     
   }
   

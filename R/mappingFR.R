@@ -1,10 +1,10 @@
-mappingUK <- function(data, var = NULL, colID = NULL,
+mappingFR <- function(data, var = NULL, colID = NULL,
                       type = c("static", "interactive"),
                       typeStatic = c("tmap", "choro.cart", "typo", "bar"),
-                      unit = c("country", "county"),
-                      year = c("2020", "2019"),
+                      unit = c("region"),
+                      year = c("2021", "2020", "2019"),
                       matchWith = c("name", "code"), 
-                      scale = c("500", "20"), dir = NULL,
+                      res = c("500", "20"), dir = NULL,
                       add_text = NULL, subset = NULL,
                       facets = NULL, aggregation_fun = sum, aggregation_unit = NULL,
                       options = mapping.options())
@@ -13,10 +13,9 @@ mappingUK <- function(data, var = NULL, colID = NULL,
   check.unit.names = options$check.unit.names
   use_cache = options$use_cache
   use_internet = options$use_internet
-  type <- match.arg(type, choices = eval(formals(mappingUK)$type))
-  typeStatic <- match.arg(typeStatic, choices = eval(formals(mappingUK)$typeStatic))
-  scale <- match.arg(scale, choices = eval(formals(mappingUK)$scale))
-  
+  type <- match.arg(type, choices = eval(formals(mappingFR)$type))
+  typeStatic <- match.arg(typeStatic, choices = eval(formals(mappingFR)$typeStatic))
+
   
   if(!is.null(var))
   {
@@ -33,7 +32,7 @@ mappingUK <- function(data, var = NULL, colID = NULL,
   }
   
   
-  if(!inherits(data, "UK"))
+  if(!inherits(data, "FR"))
   {
     # if(is.null(year))
     # {
@@ -41,11 +40,11 @@ mappingUK <- function(data, var = NULL, colID = NULL,
     # }
     data <- data.frame(data, check.names = FALSE)
     
-    unit <- match.arg(unit, choices = eval(formals(mappingUK)$unit))
-    year <- match.arg(year, choices = eval(formals(mappingUK)$year))
-    matchWith <- match.arg(matchWith, choices = eval(formals(mappingUK)$matchWith))
+    unit <- match.arg(unit, choices = eval(formals(mappingFR)$unit))
+    year <- match.arg(year, choices = eval(formals(mappingFR)$year))
+    matchWith <- match.arg(matchWith, choices = eval(formals(mappingFR)$matchWith))
     
-    data <- UK(data = data, colID = colID, unit = unit, matchWith = matchWith, subset = subset, scale = scale,
+    data <- FR(data = data, colID = colID, unit = unit, matchWith = matchWith, subset = subset,
                year = year, check.unit.names = check.unit.names, use_cache = use_cache, use_internet = use_internet, crs = options$crs,
                aggregation_fun = aggregation_fun, aggregation_unit = aggregation_unit, aggregation_var = var, dir = dir)
     
@@ -80,10 +79,10 @@ mappingUK <- function(data, var = NULL, colID = NULL,
       
       #data <- st_buffer(data, 0)
       
-      if(any(aggregation_unit%in%c("country","county")))
+      if(any(aggregation_unit%in%c("region")))
       {
         unit <- aggregation_unit
-        nm <- getNamesUK(year = year, unit = unit, all_levels = TRUE)
+        nm <- getNamesFR(year = year, unit = unit, all_levels = TRUE)
         if(attributes(data)$unit == aggregation_unit)
         {
           colnames(nm)[which(colnames(nm) == aggregation_unit)] <- attributes(data)$colID
@@ -101,7 +100,7 @@ mappingUK <- function(data, var = NULL, colID = NULL,
           # data[,aggregation_unit] <- tolower(data[,aggregation_unit, drop = TRUE])
           # nm[,aggregation_unit] <- as.character(tolower(nm[,aggregation_unit, drop = TRUE]))
           # data[,aggregation_unit] = as.character(data[,aggregation_unit, drop = TRUE])
-          # data <- suppscalesWarnings(left_join(data, nm, aggregation_unit))
+          # data <- suppressWarnings(left_join(data, nm, aggregation_unit))
           
         }else{
           
@@ -116,7 +115,7 @@ mappingUK <- function(data, var = NULL, colID = NULL,
                                                                                          FUN = aggregation_fun))
           
           data <- do.call("rbind", dt)
-          class(data) <- c(class(data),"UK")
+          class(data) <- c(class(data),"FR")
           
           colnames(data)[1] <- aggregation_unit
           
@@ -133,7 +132,7 @@ mappingUK <- function(data, var = NULL, colID = NULL,
         data[,aggregation_unit] <- tolower(data[,aggregation_unit, drop = TRUE])
         nm[,aggregation_unit] <- as.character(tolower(nm[,aggregation_unit, drop = TRUE]))
         data[,aggregation_unit] = as.character(data[,aggregation_unit, drop = TRUE])
-        data <- suppscalesWarnings(left_join(data, nm,c(aggregation_unit)))
+        data <- suppressWarnings(left_join(data, nm,c(aggregation_unit)))
         
         
       }else{

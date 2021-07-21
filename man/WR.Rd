@@ -75,7 +75,7 @@ Since the names (or codes) provided in the \code{data} given in input must be ch
 An object of class \code{WR}, with data and coordinates to use in functions which perform map.
 }
 
-\seealso{\code{\link{EU}}, \code{\link{IT}}, \code{\link{US}}}
+\seealso{\code{\link{EU}}, \code{\link{IT}}, \code{\link{US}}, \code{\link{DE}}, \code{\link{UK}}}
 
 
 \examples{

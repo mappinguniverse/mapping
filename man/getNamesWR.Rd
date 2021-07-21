@@ -19,7 +19,7 @@ getNamesWR(unit = c("all","country", "name_formal",
 \value{A character vector or a data frame with unit names and corresponding associated levels.}
 
 \seealso{
-\code{\link{getNamesIT}}, \code{\link{getNamesUS}}, \code{\link{getNamesEU}}
+\code{\link{getNamesIT}}, \code{\link{getNamesUS}}, \code{\link{getNamesEU}}, \code{\link{getNamesUK}}, \code{\link{getNamesDE}}
 }
 
 \examples{

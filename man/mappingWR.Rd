@@ -81,7 +81,7 @@ Return a map. For \code{tmap} type, the function also returns a \code{tmap} obje
 
 
 \seealso{
-\code{\link{mappingEU}},\code{\link{mappingIT}}
+\code{\link{mappingEU}},\code{\link{mappingIT},\link{mappingUS}},\code{\link{mappingDE}},\code{\link{mappingUK}}
 }
 
 \examples{

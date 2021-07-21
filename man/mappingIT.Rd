@@ -71,8 +71,8 @@ Return a map. For \code{tmap} type, the function also returns a \code{tmap} obje
 
 
 \seealso{
-\code{\link{mappingWR}},\code{\link{mappingEU}}
-}
+\code{\link{mappingWR}},\code{\link{mappingEU}},\code{\link{mappingUS}},\code{\link{mappingDE}},\code{\link{mappingUK}}}
+
 
 \examples{
 data("popIT")

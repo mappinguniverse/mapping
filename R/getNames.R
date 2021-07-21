@@ -279,3 +279,29 @@ getNamesDE <- function(unit = c("state","district", "municipal", "municipality")
   return(out)
 }
 
+
+getNamesFR <- function(year = c("2021","2020", "2019"),
+                       unit = c("region"),
+                       all_levels = TRUE)
+{
+  
+  year <- match.arg(year, choices = eval(formals(getNamesUK)$year))
+  unit <- match.arg(unit, choices = eval(formals(getNamesUK)$unit))
+  
+  dt <-  get("namesFR", pos = "package:mapping")
+  dt <- dt[[year]]
+  
+  if(unit == "region")
+  {
+    if(isFALSE(all_levels))
+    {
+      out <- unique(dt[,unit, drop = TRUE])
+      
+    }else{
+      out <- dt
+    }
+    
+  }
+  
+  return(out)
+}

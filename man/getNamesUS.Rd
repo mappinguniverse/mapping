@@ -22,7 +22,7 @@ getNamesUS(year = "2018",
 \value{A character vector or a data frame with unit names and corresponding associated levels}
 
 \seealso{
-\code{\link{getNamesIT}}, \code{\link{getNamesEU}}, \code{\link{getNamesWR}}
+\code{\link{getNamesIT}}, \code{\link{getNamesEU}}, \code{\link{getNamesWR}, \code{\link{getNamesUK}}, \code{\link{getNamesDE}}}
 }
 
 \examples{

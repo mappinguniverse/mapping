@@ -1,19 +1,22 @@
 
-loadCoordDE <- function(unit = c("state","district", "municipal", "municipality"),
+loadCoordFR <- function(unit = c("region"),
+                        year = c("2021", "2020", "2019"),
                         unit_subset = NULL, matchWith = NULL, dir = NULL,
                         use_cache = TRUE, use_internet = TRUE, crs = NULL)
 {
   
-  unit <- match.arg(unit, choices = eval(formals(loadCoordDE)$unit))
+  year <- match.arg(year, choices = eval(formals(loadCoordFR)$year))
+  unit <- match.arg(unit, choices = eval(formals(loadCoordFR)$unit))
 
+    
   if(is.null(crs))
   {
     crs <- mapping.options()$crs
   }
   
   
-  file <- paste("de_",unit,".geojson", sep = "")
-  nn <- unit
+  file <- paste("fr_",year,"_",unit,".geojson", sep = "")
+  nn <- paste(unit,year,sep = "_")
   
   if(use_cache)
   {
@@ -33,16 +36,16 @@ loadCoordDE <- function(unit = c("state","district", "municipal", "municipality"
       
       if(substr(dir, str_length(dir),str_length(dir)) == "/")
       {
-        coord <- get(load(paste(dir, "de_",unit, ".RData", sep = "")))
+        coord <- get(load(paste(dir, "fr_",year,"_",unit,".RData", sep = "")))
         
       }else{
-        coord <- get(load(paste(dir, "/de_",unit,".RData", sep = "")))
+        coord <- get(load(paste(dir, "/fr_",year,"_",unit,".RData", sep = "")))
       }
       
     }else{
       if(internet | use_internet)
       {
-        url <- paste("https://raw.githubusercontent.com/dataallaround/geospatial/master/DE/GeoJSON/", file, sep = "")
+        url <- paste("https://raw.githubusercontent.com/dataallaround/geospatial/master/FR/GeoJSON/", file, sep = "")
         response <- FALSE
         # resp <- GET(url)
         # response <- http_error(resp)
@@ -56,7 +59,7 @@ loadCoordDE <- function(unit = c("state","district", "municipal", "municipality"
           
         }
       }else{
-        coord <-  get(paste("de_",unit, sep = ""), pos = "package:mapping")
+        coord <-  get(paste("fr_","2021","_",unit, sep = ""), pos = "package:mapping")
       }
     }
   }
@@ -72,7 +75,7 @@ loadCoordDE <- function(unit = c("state","district", "municipal", "municipality"
   coord <- st_transform(coord, crs = crs)
   # coord <- suppressMessages(suppressWarnings((st_buffer(coord,0))))
   coord <- st_make_valid(coord)
-  class(coord) <- c(class(coord),"DE")
+  class(coord) <- c(class(coord),"FR")
   attributes(coord)$unit <- unit
   attributes(coord)$colID <- unit
   
@@ -83,95 +86,43 @@ loadCoordDE <- function(unit = c("state","district", "municipal", "municipality"
       matchWith <- unit
     }
     
-    unit_subset <- stri_trans_tolower(unit_subset)
-    unt <- stri_trans_tolower(coord[,matchWith, drop = TRUE])
+    unit_subset <- tolower(unit_subset)
+    unt <- tolower(coord[,matchWith, drop = TRUE])
     coord <- coord[ unt %in% unit_subset, ]
   }
   
   return(coord)
 }
 
-checkNamesDE <- function(id,
-                         unit = c("state","district", "municipal", "municipality"),
-                         matchWith = c("name", "code", "code_full"), 
-                         return_logical = FALSE, print = TRUE, use_internet = TRUE)
-{
-  
-  unit <- match.arg(unit, choices = eval(formals(checkNamesDE)$unit))
-  matchWith <- match.arg(matchWith, choices = eval(formals(checkNamesDE)$matchWith))
 
-  
-  if(matchWith == "name")
-  {
-    matchWith <- unit
-    
-  }else if(matchWith == "code_full"){
-    
-    matchWith <- paste("code_", unit, sep = "")
-    
-  }
-  
-  coord <- loadCoordDE(unit = unit)
-  De <- coord[[matchWith]]
-  
-  if(!is.null(ncol(id)))
-  {
-    warning("x must be vector. The first column is considered")
-    id <- id[,1]
-  }
-  
-  id <- tolower(id)
-  De <- tolower(De)
-  
-  nomatch <- setdiff(x = id, y = De)
-  
-  ## NON FUNZIONE. SISTEMARE!!!!!!!!!!!!!!!1
-  
-  # if(any(nomatch))
-  # {
-  #   warning(paste(x[nomatch], ", ") , call. = FALSE)
-  # }
-  
-  if(!length(nomatch) == 0 & isTRUE(print))
-  {
-    warning(paste("No match found for variables: ", paste(nomatch, sep = ", ")) , call. = FALSE)
-  }
-  
-  if(isTRUE(return_logical))
-  {
-    nomatch <- id %in% De
-  }
-  
-  
-  return(nomatch)
-  
-}
-
-
-DE <- function(data, colID = NULL,
-               unit = c("state","district", "municipal", "municipality"),
-               matchWith = c("name", "code", "code_full"), 
+FR <- function(data, colID = NULL,
+               unit = c("region"),
+               year = c("2021", "2020", "2019"),
+               matchWith = c("name", "code"),
                subset = NULL, add = NULL, new_var_names = NULL,
                aggregation_fun = sum, aggregation_unit = NULL, aggregation_var = NULL,
                facets = NULL, check.unit.names = TRUE, dir = NULL,
                use_cache = TRUE, print = FALSE, use_internet = TRUE, crs = NULL)
 {
   
-  matchWith <- match.arg(matchWith, choices = eval(formals(DE)$matchWith))
+  res <- match.arg(res, choices = eval(formals(FR)$res))
+  matchWith <- match.arg(matchWith, choices = eval(formals(FR)$matchWith))
   
-  if(inherits(data, "DE"))
+  if(inherits(data, "FR"))
   {
     
     colID <- attributes(data)$colID
+    year <- attributes(data)$year
     unit <- attributes(data)$unit
     colName <- colnames(data)[colID]
-    coord <- loadCoordDE(unit = unit, use_cache = use_cache, crs = crs)
+    coord <- loadCoordFR(unit = unit, year = year, use_cache = use_cache, crs = crs)
     out <- data
     
   }else{
     
-    unit <- match.arg(unit, choices = eval(formals(DE)$unit))
-
+    unit <- match.arg(unit, choices = eval(formals(UK)$unit))
+    year <- match.arg(year, choices = eval(formals(UK)$year))
+    
     data <- data.frame(data, check.names = FALSE)
     
     if(is.null(crs))
@@ -183,10 +134,6 @@ DE <- function(data, colID = NULL,
     if(matchWith == "name")
     {
       matchWith <- unit
-      
-    }else if(matchWith == "code_full"){
-      
-      matchWith <- paste("code_", unit, sep = "")
       
     }
     
@@ -211,15 +158,15 @@ DE <- function(data, colID = NULL,
     
     
     
-    coord <- loadCoordDE(unit = unit, use_cache = use_cache, crs = crs, dir = dir)
-    coord[[matchWith]] <- stri_trans_tolower(coord[[matchWith]])
-    data[,colID] <- stri_trans_tolower(data[,colID])
+    coord <- loadCoordFR(unit = unit, year = year, use_cache = use_cache, crs = crs, dir = dir)
+    coord[[matchWith]] <- tolower(coord[[matchWith]])
+    data[,colID] <- tolower(data[,colID])
     
     
     if(check.unit.names)
     {
-      De <- coord[[matchWith]]
-      dd <- setdiff(x = data[,colID, drop = TRUE], y = De)
+      Fr <- coord[[matchWith]]
+      dd <- setdiff(x = data[,colID, drop = TRUE], y = Fr)
       if(!length(dd) == 0 & isTRUE(print))
       {
         warning(paste("No match found for variables: ", paste(dd, sep = ", ")) , call. = FALSE)
@@ -291,10 +238,10 @@ DE <- function(data, colID = NULL,
     }
     
     
-
-    if(any(aggregation_unit%in%c("country", "county")))
+    year <- year
+    if(any(aggregation_unit%in%c("region")))
     {
-      nm <- getNamesDE(unit = aggregation_unit, all_levels = TRUE)
+      nm <- getNamesFR(year = year, unit = aggregation_unit, all_levels = TRUE)
       
       if(unit == aggregation_unit)
       {
@@ -330,7 +277,7 @@ DE <- function(data, colID = NULL,
                                                                                       FUN = aggregation_fun))
         
         out <- do.call("rbind", dt)
-        class(out) <- c(class(out),"DE")
+        class(out) <- c(class(out),"FR")
         
         colnames(out)[1] <- aggregation_unit
         
@@ -343,8 +290,8 @@ DE <- function(data, colID = NULL,
         facets_join <- facets
         
       }
-      out[,aggregation_unit] <- stri_trans_tolower(out[,aggregation_unit, drop = TRUE])
-      nm[,aggregation_unit] <- as.character(stri_trans_tolower(nm[,aggregation_unit, drop = TRUE]))
+      out[,aggregation_unit] <- tolower(out[,aggregation_unit, drop = TRUE])
+      nm[,aggregation_unit] <- as.character(tolower(nm[,aggregation_unit, drop = TRUE]))
       out[,aggregation_unit] = as.character(out[,aggregation_unit, drop = TRUE])
       out <- suppressWarnings(left_join(out, nm,c(aggregation_unit)))
       
@@ -386,8 +333,9 @@ DE <- function(data, colID = NULL,
   }
   
   
-  class(out) <- c(class(out),"DE")
+  class(out) <- c(class(out),"FR")
   attributes(out)$unit <- unit
+  attributes(out)$year <- year
   attributes(out)$colID <- colName
   
   return(out)
