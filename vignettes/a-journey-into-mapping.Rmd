@@ -23,14 +23,18 @@ knitr::opts_chunk$set(echo = TRUE, collapse = TRUE,
 The mapping functions use the already available and well implemented function in tmap, cartography, and leaflet packages.
 
 
-Given the differnt boundary structure of each country, the package provide specific mapping functions and building object functions to link e manipulate data with spatial coordinates.
+Given the different boundary structure of each country, the package provide specific mapping functions and building object functions to link e manipulate data with spatial coordinates.
 
 | Country | Object creation function |Object Class |  Map Function|
 ------------|------------| ------------ | ------------ | -------
 | World |  `WR()` | **WR** | `mappingWR()` | 
-| European population for nuts 2| `EU()`| **EU** | `mappingEU()`|
-| European population for nuts 3  | `IT()` | **IT** | `mappingIT()` |
-| Italian population | `US()`| **US** | `mappingUS()`|
+| European Union| `EU()`| **EU** | `mappingEU()`|
+| Italy  | `IT()` | **IT** | `mappingIT()` |
+| United states of america | `US()`| **US** | `mappingUS()`|
+| Germany | `DE()`| **DE** | `mappingDE()`|
+| United kingdom | `UK()`| **UK** | `mappingUK()`|
+| France | `FR()`| **FR** | `mappingFR()`|
+
 
 
 The CRAN version can be loaded as follows:

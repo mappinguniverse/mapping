@@ -6,6 +6,7 @@
 
 Maps are an important tool to visualize variables distribution across different spatial object. The mapping process require to link the data with coordinates and then generate the correspondent map. This package provide coordinates, linking and mapping functions for an automatic, flexible and easy approach of mapping workflows of different geographical statistical unit.Geographical coordinates are provided in the package and automatically linked with the input data to generate maps with internal provided functions or external functions.
 
+Coordinates available: World, European Union, United States, Italy, United Kingdom, Germany, France.
 
 ## Installation
 

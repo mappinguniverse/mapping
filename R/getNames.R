@@ -192,3 +192,116 @@ getNamesUS <- function(year = "2018",
 
   return(out)
 }
+
+
+
+getNamesUK <- function(year = c("2020", "2019"),
+                       unit = c("country", "county"),
+                       all_levels = TRUE)
+{
+  
+  year <- match.arg(year, choices = eval(formals(getNamesUK)$year))
+  unit <- match.arg(unit, choices = eval(formals(getNamesUK)$unit))
+  
+  dt <-  get("namesUK", pos = "package:mapping")
+  dt <- dt[[year]]
+  
+  if(unit == "country")
+  {
+    if(isFALSE(all_levels))
+    {
+      out <- unique(dt[,unit, drop = TRUE])
+      
+    }else{
+      out <- (dt[c("country","code_country" )])
+      out <- distinct(out)
+    }
+  
+}else if(unit == "county")
+{
+  if(isFALSE(all_levels))
+  {
+    out <- dt[,unit, drop = TRUE]
+  }else{
+    out <- dt
+  }
+}
+
+return(out)
+}
+
+
+getNamesDE <- function(unit = c("state","district", "municipal", "municipality"),
+                       all_levels = TRUE)
+{
+  
+  unit <- match.arg(unit, choices = eval(formals(getNamesDE)$unit))
+  
+  dt <-  get("namesDE", pos = "package:mapping")
+
+  if(unit == "state")
+  {
+    if(isFALSE(all_levels))
+    {
+      out <- (dt[[unit]])
+      
+    }else{
+      out <- (dt[[unit]][c("state","code_state", "code" )])
+      # out <- unique(out)
+    }
+    
+  }else if(unit == "district")
+  {
+    if(isFALSE(all_levels))
+    {
+      out <- dt[[unit]]
+    }else{
+      out <- (dt[[unit]][c("state","code_district", "code" )])
+    }
+  }else if(unit == "municipal")
+  {
+    if(isFALSE(all_levels))
+    {
+      out <- dt[[unit]]
+    }else{
+      out <- (dt[[unit]][c("state","code_municipal", "code" )])
+    }
+  }else if(unit == "municipality")
+  {
+    if(isFALSE(all_levels))
+    {
+      out <- dt[[unit]]
+    }else{
+      out <- (dt[[unit]][c("state","code_municipality", "code" )])
+    }
+  }
+  
+  return(out)
+}
+
+
+getNamesFR <- function(year = c("2021","2020", "2019"),
+                       unit = c("region"),
+                       all_levels = TRUE)
+{
+  
+  year <- match.arg(year, choices = eval(formals(getNamesFR)$year))
+  unit <- match.arg(unit, choices = eval(formals(getNamesFR)$unit))
+  
+  dt <-  get("namesFR", pos = "package:mapping")
+  dt <- dt[[year]]
+  
+  if(unit == "region")
+  {
+    if(isFALSE(all_levels))
+    {
+      out <- unique(dt[,unit, drop = TRUE])
+      
+    }else{
+      out <- dt
+    }
+    
+  }
+  
+  return(out)
+}

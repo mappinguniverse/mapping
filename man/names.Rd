@@ -3,6 +3,9 @@
 \alias{namesEU}
 \alias{namesIT}
 \alias{namesUS}
+\alias{namesDE}
+\alias{namesFR}
+\alias{namesUK}
 
 \docType{data}
 
@@ -14,12 +17,15 @@ data("namesWR")
 data("namesEU")
 data("namesIT")
 data("namesUS")
+data("namesDE")
+data("namesFR")
+data("namesUK")
 }
 
 
 \format{A list with all names divided for year and type of units.}
 
-\details{Look at \code{\link{getNamesWR}}, \code{\link{getNamesEU}}, \code{\link{getNamesIT}}, and \code{\link{getNamesUS}}}
+\details{Look at \code{\link{getNamesWR}}, \code{\link{getNamesEU}}, \code{\link{getNamesIT}}, \code{\link{getNamesUS}}, \code{\link{getNamesUK}}, \code{\link{getNamesDE}}, \code{\link{getNamesFR}}}
 
 \source{
 \url{https://datacatalog.worldbank.org}, \url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/countries}, \url{https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html}, Istat}

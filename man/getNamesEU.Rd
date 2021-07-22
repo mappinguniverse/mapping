@@ -23,7 +23,7 @@ getNamesEU(year = c("2021","2016", "2013", "2010", "2006", "2003"),
 
 
 \seealso{
-\code{\link{getNamesIT}}, \code{\link{getNamesUS}}, \code{\link{getNamesWR}}
+\code{\link{getNamesIT}}, \code{\link{getNamesUS}}, \code{\link{getNamesWR}}, \code{\link{getNamesUK}}, \code{\link{getNamesDE}}
 }
 
 \examples{

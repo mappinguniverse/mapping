@@ -6,3 +6,10 @@
 # mapping 1.2.1 (2021 - 06)
 
 - Bugs fixing
+
+# mapping 1.3 (2021 - 07)
+
+- Add coordinates, object and map function for United Kingdom
+- Add coordinates, object and map function for France
+- Add coordinates, object and map function for Germany
+- Bugs fixing

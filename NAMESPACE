@@ -9,7 +9,7 @@ importFrom("graphics", "plot")
 
 #importFrom("sf", "read_sf", "st_buffer", "st_transform", "st_geometry", "st_crs", "st_as_sf")
 
-import("tmap", "ggplot2", "cartography", "sf",
+import("tmap", "ggplot2", "cartography", "sf", "s2",
        "rgdal", "stats", "leaflet", "tmaptools", "viridisLite", "htmltools", "leafpop")
 
 #import("jsonlite", "geojsonio")
@@ -20,6 +20,7 @@ importFrom("curl", "has_internet")
 importFrom("leafsync", "sync")
 importFrom("mapview", "mapview")
 importFrom("stringr", "str_length")
+importFrom("stringi", "stri_trans_tolower")
 importFrom("utils", "write.csv")
 importFrom("jsonlite","toJSON")
 importFrom("geojsonio","geojson_write")
@@ -31,13 +32,13 @@ export("mapPalette")
 export("saveObj")
 
 export("mapping")
-export("mappingIT","mappingEU", "mappingWR", "mappingUS")
+export("mappingIT","mappingEU", "mappingWR", "mappingUS", "mappingUK", "mappingDE", "mappingFR")
 #export("mappingIT_interactive","mappingEU_interactive", "mappingWR_interactive", "mappingUS_interactive", "mapping_interactive")
 
-export("loadCoordIT", "loadCoordEU", "loadCoordWR", "loadCoordUS")
-export("checkNamesIT", "checkNamesEU", "checkNamesWR", "checkNamesUS")
-export("IT", "EU", "WR", "US")
+export("loadCoordIT", "loadCoordEU", "loadCoordWR", "loadCoordUS", "loadCoordUK", "loadCoordDE", "loadCoordFR")
+export("checkNamesIT", "checkNamesEU", "checkNamesWR", "checkNamesUS", "checkNamesUK", "checkNamesDE")
+export("IT", "EU", "WR", "US", "UK", "DE", "FR")
 
-export("getNamesIT", "getNamesEU", "getNamesWR", "getNamesUS")
+export("getNamesIT", "getNamesEU", "getNamesWR", "getNamesUS", "getNamesUK", "getNamesDE", "getNamesFR")
 
 export("mapping.options", "mapping.options.reset")

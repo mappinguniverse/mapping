@@ -58,7 +58,7 @@ An object of class \code{US}, with data and coordinates to use in functions whic
 
 
 
-\seealso{\code{\link{WR}}, \code{\link{EU}}, \code{\link{IT}}}
+\seealso{\code{\link{WR}}, \code{\link{EU}}, \code{\link{IT}}, \code{\link{DE}}, \code{\link{UK}}}
 
 
 

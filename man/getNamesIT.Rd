@@ -21,7 +21,7 @@ getNamesIT(year = c("2021","2020", "2019", "2018", "2017"),
 
 
 \seealso{
-\code{\link{getNamesEU}}, \code{\link{getNamesUS}}, \code{\link{getNamesWR}}
+\code{\link{getNamesEU}}, \code{\link{getNamesUS}}, \code{\link{getNamesWR}}, \code{\link{getNamesUK}}, \code{\link{getNamesDE}}
 }
 
 \examples{
