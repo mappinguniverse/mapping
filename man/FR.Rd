@@ -67,11 +67,14 @@ An object of class \code{FR}, with data and coordinates to use in functions whic
 \examples{
 
 data("popFR")
+
+\donttest{
+
 fr <- FR(data = popFR)
 
 ### Adding two varaibles
 
-\dontrun{
+
 fr2 <- FR(data = popFR,
           add = ~I(population/1000) + I(population/100) )
 

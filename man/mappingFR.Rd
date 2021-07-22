@@ -77,9 +77,10 @@ Return a map. For \code{tmap} type, the function also returns a \code{tmap} obje
 
 data("popFR")
 
+\dontrun{
+
 fr <- FR(data = popFR)
 
-\dontrun{
 ###############
 #   Statics   #
 ###############
@@ -87,10 +88,10 @@ fr <- FR(data = popFR)
 mappingFR(fr, var = "population")
 
 
-  mappingFR(data = fr, var = "population", subset = ~I(country == "corse"))
+mappingFR(data = fr, var = "population", subset = ~I(region == "corse"))
   
   
-  mappingFR(data = fr, var = "population", facets =  "region")
+mappingFR(data = fr, var = "population", facets =  "region")
   
   
 ###############

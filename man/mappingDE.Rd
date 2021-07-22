@@ -68,13 +68,14 @@ de <- DE(data = popDE, colID = "code_state",
          unit = "state", matchWith = "code_full", 
          check.unit.names = FALSE)
 
+\donttest{
 ###############
 #   Statics   #
 ###############
 
 mappingDE(data = de, var = "population_2020")
 
-\dontrun{
+
   mappingDE(data = de, var = "population_2020", 
             subset = ~I(state == "bayern"))
   

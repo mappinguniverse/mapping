@@ -39,15 +39,14 @@ A data.frame object with column indicating names, id, and the geometry to map.
 
 \examples{
 
+\donttest{
 FR_coords = loadCoordFR(unit = "region", year = "2020")
 str(FR_coords)
 
-\dontrun{
+
 library(tmap)
 tm_shape(FR_coords) + tm_borders()
 
-library(mapview)
-mapview(FR_coords)
 }
 
 }
