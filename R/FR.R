@@ -86,8 +86,8 @@ loadCoordFR <- function(unit = c("region"),
       matchWith <- unit
     }
     
-    unit_subset <- tolower(unit_subset)
-    unt <- tolower(coord[,matchWith, drop = TRUE])
+    unit_subset <- stri_trans_tolower(unit_subset)
+    unt <- stri_trans_tolower(coord[,matchWith, drop = TRUE])
     coord <- coord[ unt %in% unit_subset, ]
   }
   
@@ -105,7 +105,7 @@ FR <- function(data, colID = NULL,
                use_cache = TRUE, print = FALSE, use_internet = TRUE, crs = NULL)
 {
   
-  res <- match.arg(res, choices = eval(formals(FR)$res))
+
   matchWith <- match.arg(matchWith, choices = eval(formals(FR)$matchWith))
   
   if(inherits(data, "FR"))
@@ -120,8 +120,8 @@ FR <- function(data, colID = NULL,
     
   }else{
     
-    unit <- match.arg(unit, choices = eval(formals(UK)$unit))
-    year <- match.arg(year, choices = eval(formals(UK)$year))
+    unit <- match.arg(unit, choices = eval(formals(FR)$unit))
+    year <- match.arg(year, choices = eval(formals(FR)$year))
     
     data <- data.frame(data, check.names = FALSE)
     
@@ -159,8 +159,8 @@ FR <- function(data, colID = NULL,
     
     
     coord <- loadCoordFR(unit = unit, year = year, use_cache = use_cache, crs = crs, dir = dir)
-    coord[[matchWith]] <- tolower(coord[[matchWith]])
-    data[,colID] <- tolower(data[,colID])
+    coord[[matchWith]] <- stri_trans_tolower(coord[[matchWith]])
+    data[,colID] <- stri_trans_tolower(data[,colID])
     
     
     if(check.unit.names)
@@ -259,8 +259,8 @@ FR <- function(data, colID = NULL,
                          by = list(var = out[, aggregation_unit, drop = TRUE]), FUN = aggregation_fun)
         colnames(out)[1] <- aggregation_unit
         facets_join <- NULL
-        # out[,aggregation_unit] <- tolower(out[,aggregation_unit, drop = TRUE])
-        # nm[,aggregation_unit] <- as.character(tolower(nm[,aggregation_unit, drop = TRUE]))
+        # out[,aggregation_unit] <- stri_trans_tolower(out[,aggregation_unit, drop = TRUE])
+        # nm[,aggregation_unit] <- as.character(stri_trans_tolower(nm[,aggregation_unit, drop = TRUE]))
         # out[,aggregation_unit] = as.character(out[,aggregation_unit, drop = TRUE])
         # out <- suppressWarnings(left_join(out, nm,aggregation_unit))
         
@@ -290,8 +290,8 @@ FR <- function(data, colID = NULL,
         facets_join <- facets
         
       }
-      out[,aggregation_unit] <- tolower(out[,aggregation_unit, drop = TRUE])
-      nm[,aggregation_unit] <- as.character(tolower(nm[,aggregation_unit, drop = TRUE]))
+      out[,aggregation_unit] <- stri_trans_tolower(out[,aggregation_unit, drop = TRUE])
+      nm[,aggregation_unit] <- as.character(stri_trans_tolower(nm[,aggregation_unit, drop = TRUE]))
       out[,aggregation_unit] = as.character(out[,aggregation_unit, drop = TRUE])
       out <- suppressWarnings(left_join(out, nm,c(aggregation_unit)))
       

@@ -285,8 +285,8 @@ getNamesFR <- function(year = c("2021","2020", "2019"),
                        all_levels = TRUE)
 {
   
-  year <- match.arg(year, choices = eval(formals(getNamesUK)$year))
-  unit <- match.arg(unit, choices = eval(formals(getNamesUK)$unit))
+  year <- match.arg(year, choices = eval(formals(getNamesFR)$year))
+  unit <- match.arg(unit, choices = eval(formals(getNamesFR)$unit))
   
   dt <-  get("namesFR", pos = "package:mapping")
   dt <- dt[[year]]
