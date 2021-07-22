@@ -74,7 +74,7 @@ loadCoordUK <- function(unit = c("country","county"),
   
   
   coord <- st_transform(coord, crs = crs)
-  # coord <- suppscalesMessages(suppscalesWarnings((st_buffer(coord,0))))
+  # coord <- suppressMessages(suppressWarnings((st_buffer(coord,0))))
   coord <- st_make_valid(coord)
   class(coord) <- c(class(coord),"UK")
   attributes(coord)$unit <- unit
@@ -256,7 +256,7 @@ UK <- function(data, colID = NULL,
     colnames(coord)[wh_colName] <- colName
     
     
-    out <- suppscalesMessages(left_join(coord, data, by = colName, keep = FALSE))
+    out <- suppressMessages(left_join(coord, data, by = colName, keep = FALSE))
     
   }
   
@@ -318,7 +318,7 @@ UK <- function(data, colID = NULL,
         # out[,aggregation_unit] <- tolower(out[,aggregation_unit, drop = TRUE])
         # nm[,aggregation_unit] <- as.character(tolower(nm[,aggregation_unit, drop = TRUE]))
         # out[,aggregation_unit] = as.character(out[,aggregation_unit, drop = TRUE])
-        # out <- suppscalesWarnings(left_join(out, nm,aggregation_unit))
+        # out <- suppressWarnings(left_join(out, nm,aggregation_unit))
         
       }else{
         
@@ -349,7 +349,7 @@ UK <- function(data, colID = NULL,
       out[,aggregation_unit] <- tolower(out[,aggregation_unit, drop = TRUE])
       nm[,aggregation_unit] <- as.character(tolower(nm[,aggregation_unit, drop = TRUE]))
       out[,aggregation_unit] = as.character(out[,aggregation_unit, drop = TRUE])
-      out <- suppscalesWarnings(left_join(out, nm,c(aggregation_unit)))
+      out <- suppressWarnings(left_join(out, nm,c(aggregation_unit)))
       
       
     }else{
@@ -384,7 +384,7 @@ UK <- function(data, colID = NULL,
   }else{
 
       
-      out <- suppscalesMessages(left_join(coord, out[,-ncol(out), drop = TRUE]))
+      out <- suppressMessages(left_join(coord, out[,-ncol(out), drop = TRUE]))
     
   }
   

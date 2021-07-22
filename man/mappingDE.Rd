@@ -31,7 +31,6 @@ mappingDE(data, var = NULL, colID = NULL,
 \code{"code_full"} \tab if unit complete code}
 }
 \item{dir}{local directory in which shape files are stored}
-  \item{show_it}{logical value set to TRUE indicating if the map entire map is drawn or only the coordinates linked to the input data}
 \item{add_text}{character name indicating the column with text labels }
   \item{subset}{a formula indicating the condition to subset the data. See the details section}
   \item{facets}{variable(s) name to split the data}
@@ -65,7 +64,9 @@ Return a map. For \code{tmap} type, the function also returns a \code{tmap} obje
 
 data("popDE")
 
-de <- DE(data = popDE, colID = "code_state", unit = "state", matchWith = "code_full", check.unit.names = FALSE)
+de <- DE(data = popDE, colID = "code_state", 
+         unit = "state", matchWith = "code_full", 
+         check.unit.names = FALSE)
 
 ###############
 #   Statics   #
@@ -74,10 +75,12 @@ de <- DE(data = popDE, colID = "code_state", unit = "state", matchWith = "code_f
 mappingDE(data = de, var = "population_2020")
 
 \dontrun{
-  mappingDE(data = de, var = "population_2020", subset = ~I(state == "bayern"))
+  mappingDE(data = de, var = "population_2020", 
+            subset = ~I(state == "bayern"))
   
   
-  mappingDE(data = de, var = "population_2020", facets =  "state")
+  mappingDE(data = de, var = "population_2020", 
+            facets =  "state")
 
 }
 
@@ -91,7 +94,9 @@ mappingDE(data = de, var = "population_2020", type = "interactive")
 \donttest{
 
   
-  mappingDE(data = de, var = "population_2020", subset = ~I(state == "bayern"), type = "interactive")
+  mappingDE(data = de, var = "population_2020", 
+            subset = ~I(state == "bayern"), 
+            type = "interactive")
 
 }
 

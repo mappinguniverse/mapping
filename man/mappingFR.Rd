@@ -1,23 +1,24 @@
-\name{mappingUK}
-\alias{mappingUK}
+\name{mappingFR}
+\alias{mappingFR}
 
-\title{Static maps for United Kingdom}
-\description{Function to produce static maps for United Kingdom statistical unit.}
-
+\title{Static maps for France}
+\description{Function to produce static maps for France statistical unit.}
 
 \usage{
-mappingUK(data, var = NULL, colID = NULL, 
+mappingFR(data, var = NULL, colID = NULL, 
           type = c("static", "interactive"), 
-          typeStatic = c("tmap", "choro.cart", "typo", "bar"),
-          unit = c("country", "county"), year = c("2020", "2019"), 
-          matchWith = c("name", "code"), scale = c("500", "20"), 
-          dir = NULL, add_text = NULL, subset = NULL, 
-          facets = NULL, aggregation_fun = sum, aggregation_unit = NULL, 
+          typeStatic = c("tmap", "choro.cart", "typo", "bar"), 
+          unit = c("region"), year = c("2021", "2020", "2019"), 
+          matchWith = c("name", "code"), 
+          dir = NULL, add_text = NULL, subset = NULL, facets = NULL, 
+          aggregation_fun = sum, aggregation_unit = NULL, 
           options = mapping.options())
 }
 
+
 \arguments{
-  \item{data}{a data.frame object with variables to display or a \code{UK} object produced by \code{\link{UK}} function. If object of class \code{UK},  arguments \code{unit}, \code{year}, and \code{matchWith} will be ignored}
+
+  \item{data}{a data.frame object with variables to display or a \code{UK} object produced by \code{\link{FR}} function. If object of class \code{FR},  arguments \code{unit}, \code{year}, and \code{matchWith} will be ignored}
   \item{var}{character value(s) or columns number(s) indicating the variable to plot}
   \item{colID}{character value or columns number indicating the column with unit names}
   \item{type}{if generates static or interactive map}
@@ -29,7 +30,6 @@ mappingUK(data, var = NULL, colID = NULL,
 \code{"name"} \tab if unit names). \cr
 \code{"code"} \tab if unit code }
 }
-  \item{scale}{the scale of a map}
 \item{dir}{local directory in which shape files are stored}
 \item{add_text}{character name indicating the column with text labels }
   \item{subset}{a formula indicating the condition to subset the data. See the details section}
@@ -38,13 +38,12 @@ mappingUK(data, var = NULL, colID = NULL,
   \item{aggregation_unit}{variable name by which the unit are aggregated}
   \item{options}{a list with options using \code{mapping.options} function}
 
-}
 
+}
 
 \details{
 If \code{data} is a object of class "UK" generated using the \code{\link{UK}} function, the arguments \code{unit}, and \code{year} are ignored, because the object already contains the coordinates.
 
-The \code{aggregation_unit} provides an aggregation for a user specified variable in \code{data}, or for larger statistical unit, automatically provided when the function link the \code{data} with the coordinates. For example, if data are of type \code{county}, we will have variables for larger aggregate unit, that is \code{country} variables. Look at \code{\link{UK}} for more details.
 
 \code{subset} provide an expression to subsetting the \code{data} using a formula, with the logical operators. For example data can be subsetting as follows: \code{~I("Variable 1" == "condition 1" & "Variable 2" != "condition 2")} or for example, \code{~I("Variable 1" > "condition 1" | "Variable 2" != "condition 2")}.
 
@@ -73,44 +72,40 @@ Return a map. For \code{tmap} type, the function also returns a \code{tmap} obje
 \code{\link{mappingWR}},\code{\link{mappingEU}}, \code{\link{mappingUS}}, \code{\link{mappingDE}}
 }  
 
+
 \examples{
 
-data("popUK")
+data("popFR")
 
-uk <- UK(data = popUK, unit = "county", matchWith = "code", check.unit.names = FALSE)
+fr <- FR(data = popFR)
 
+\dontrun{
 ###############
 #   Statics   #
 ###############
 
-mappingUK(data = uk, var = "population")
-
-\dontrun{
-  mappingUK(data = uk, var = "population", subset = ~I(country == "england"))
-  
-  
-  mappingUK(data = uk, var = "population", facets =  "country")
-  
-  mappingUK(data = uk, var = "population",
-            aggregation_unit = "country",
-            aggregation_fun = function(x) sum(x, na.rm = TRUE))
-}
+mappingFR(fr, var = "population")
 
 
+  mappingFR(data = fr, var = "population", subset = ~I(country == "corse"))
+  
+  
+  mappingFR(data = fr, var = "population", facets =  "region")
+  
+  
 ###############
 # Interactive #
 ###############
 
-mappingUK(data = uk, var = "population", type = "interactive")
-
-\donttest{
-
-  
-  mappingUK(data = uk, var = "population", subset = ~I(country == "england"), type = "interactive")
-  
-  mappingUK(data = uk, var = "population",
-            aggregation_unit = "country",
-            aggregation_fun = function(x) sum(x, na.rm = TRUE), type = "interactive")
-}
+mappingFR(data = fr, var = "population", type = "interactive")
 
 }
+
+
+
+
+
+}
+
+
+

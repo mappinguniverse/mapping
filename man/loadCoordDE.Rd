@@ -2,7 +2,7 @@
 \alias{loadCoordDE}
 
 
-\title{Get European coordinates}
+\title{Get Germany coordinates}
 
 \description{
 Loads and returns names, id, and coordinates for Germany statistical unit,  to use with \code{mapping} functions and other "map" functions that accept an \code{sf} object.
@@ -25,7 +25,7 @@ loadCoordDE(unit = c("state", "district", "municipal", "municipality"),
 }
 
 \details{
-Coordinates are download from the Github repo \url{https://github.com/dataallaround/geospatial} from EU folder \url{https://github.com/dataallaround/geospatial/tree/master/DE}.
+Coordinates are download from the Github repo \url{https://github.com/dataallaround/geospatial} from DE folder \url{https://github.com/dataallaround/geospatial/tree/master/DE}.
 
 If \code{unit} is not specified, state borders are loaded.
 
@@ -59,14 +59,14 @@ str(DE_coords)
 library(tmap)
 tm_shape(DE_coords) + tm_borders()
 
-library(mapview)
-mapview(DE_coords)
 
 \donttest{
 
 ## Load subset
 
-coords_de <- loadCoordDE(unit = "district", unit_subset = "bayern", matchWith = "state")
+coords_de <- loadCoordDE(unit = "district", 
+                         unit_subset = "bayern", 
+                         matchWith = "state")
 
 }
 

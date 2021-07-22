@@ -27,7 +27,7 @@ loadCoordUK(unit = c("country", "county"),
 }
 
 \details{
-Coordinates are download from the Github repo \url{https://github.com/dataallaround/geospatial} from EU folder \url{https://github.com/dataallaround/geospatial/tree/master/UK}.
+Coordinates are download from the Github repo \url{https://github.com/dataallaround/geospatial} from UK folder \url{https://github.com/dataallaround/geospatial/tree/master/UK}.
 
 If \code{unit} is not specified, country borders are loaded.
 

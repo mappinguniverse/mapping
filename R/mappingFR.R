@@ -4,7 +4,7 @@ mappingFR <- function(data, var = NULL, colID = NULL,
                       unit = c("region"),
                       year = c("2021", "2020", "2019"),
                       matchWith = c("name", "code"), 
-                      res = c("500", "20"), dir = NULL,
+                      dir = NULL,
                       add_text = NULL, subset = NULL,
                       facets = NULL, aggregation_fun = sum, aggregation_unit = NULL,
                       options = mapping.options())
@@ -97,8 +97,8 @@ mappingFR <- function(data, var = NULL, colID = NULL,
           
           colnames(data)[1] <- aggregation_unit
           facets_join <- NULL
-          # data[,aggregation_unit] <- tolower(data[,aggregation_unit, drop = TRUE])
-          # nm[,aggregation_unit] <- as.character(tolower(nm[,aggregation_unit, drop = TRUE]))
+          # data[,aggregation_unit] <- stri_trans_tolower(data[,aggregation_unit, drop = TRUE])
+          # nm[,aggregation_unit] <- as.character(stri_trans_tolower(nm[,aggregation_unit, drop = TRUE]))
           # data[,aggregation_unit] = as.character(data[,aggregation_unit, drop = TRUE])
           # data <- suppressWarnings(left_join(data, nm, aggregation_unit))
           
@@ -129,8 +129,8 @@ mappingFR <- function(data, var = NULL, colID = NULL,
           
         }
         
-        data[,aggregation_unit] <- tolower(data[,aggregation_unit, drop = TRUE])
-        nm[,aggregation_unit] <- as.character(tolower(nm[,aggregation_unit, drop = TRUE]))
+        data[,aggregation_unit] <- stri_trans_tolower(data[,aggregation_unit, drop = TRUE])
+        nm[,aggregation_unit] <- as.character(stri_trans_tolower(nm[,aggregation_unit, drop = TRUE]))
         data[,aggregation_unit] = as.character(data[,aggregation_unit, drop = TRUE])
         data <- suppressWarnings(left_join(data, nm,c(aggregation_unit)))
         

@@ -101,7 +101,7 @@ mappingUK <- function(data, var = NULL, colID = NULL,
           # data[,aggregation_unit] <- tolower(data[,aggregation_unit, drop = TRUE])
           # nm[,aggregation_unit] <- as.character(tolower(nm[,aggregation_unit, drop = TRUE]))
           # data[,aggregation_unit] = as.character(data[,aggregation_unit, drop = TRUE])
-          # data <- suppscalesWarnings(left_join(data, nm, aggregation_unit))
+          # data <- suppressMessages(left_join(data, nm, aggregation_unit))
           
         }else{
           
@@ -133,7 +133,7 @@ mappingUK <- function(data, var = NULL, colID = NULL,
         data[,aggregation_unit] <- tolower(data[,aggregation_unit, drop = TRUE])
         nm[,aggregation_unit] <- as.character(tolower(nm[,aggregation_unit, drop = TRUE]))
         data[,aggregation_unit] = as.character(data[,aggregation_unit, drop = TRUE])
-        data <- suppscalesWarnings(left_join(data, nm,c(aggregation_unit)))
+        data <- suppressWarnings(left_join(data, nm,c(aggregation_unit)))
         
         
       }else{
