@@ -1,7 +1,7 @@
 Package: mapping
 Type: Package
-Version: 1.3
-Date: 2021-07-22
+Version: 1.4
+Date: 2023-08-19
 Title: Automatic Download, Linking, Manipulating Coordinates for Maps
 Description: Maps are an important tool to visualise variables distribution across different spatial object. The mapping process require to link the data with coordinates and then generate the correspondent map. This package provide coordinates, linking and mapping functions for an automatic, flexible and easy approach of mapping workflow of different geographical statistical unit.Geographical coordinates are provided in the package and automatically linked with the input data to generate maps with internal provided functions or external functions.provide an easy, flexible and automatic approach to potentially download updated coordinates, to link statistical units with coordinates and to aggregate variables based on the spatial hierarchy of units. The object returned from the package can be used for thematic maps with the build-in functions provided in mapping or with other packages already available.
 Authors@R: c(person("Alessio", "Serafini", role = c("aut", "cre"),
@@ -10,7 +10,7 @@ Authors@R: c(person("Alessio", "Serafini", role = c("aut", "cre"),
                     email = "giancarlo.ferrara@gmail.com"))
 Depends: R (>= 3.5)
 Imports: tmap (>= 2.3-2), cartography (>= 2.3.0), graphics(>= 3.6.1),
-        ggplot2 (>= 3.2.1), rgdal(>= 1.4-8), sf(>= 1.0-0), utils,
+        ggplot2 (>= 3.2.1), sf(>= 1.0-0), utils,
         stats, dplyr(>= 0.8.3), leaflet(>= 2.0.3), tmaptools(>= 2.0-2),
         viridisLite(>= 0.3.0), grid(>= 3.6.1), httr(>= 1.4.1), curl(>=
         4.3), htmltools(>= 0.5.0), leafpop(>= 0.0.5), leafsync(>=

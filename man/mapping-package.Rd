@@ -1,6 +1,5 @@
 \name{mapping-package}
 \alias{mappinng-package}
-\docType{package}
 
 \title{Worldwide, European, USA, and Italian static and interactive maps}
 
