@@ -17,8 +17,7 @@
 }
 
 
-\source{
-\url{https://datacatalog.worldbank.org}}
+\source{World Bank}
 
 
 \keyword{datasets}
