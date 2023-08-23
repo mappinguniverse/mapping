@@ -53,11 +53,6 @@ Alessio Serafini
 IT_coords = loadCoordIT(unit = "regione", year = "2020")
 str(IT_coords)
 
-library(tmap)
-tm_shape(IT_coords) + tm_borders()
-
-library(mapview)
-mapview(IT_coords)
 
 \donttest{
 ## Italy
@@ -65,13 +60,9 @@ mapview(IT_coords)
 IT_coords = loadCoordIT()
 str(IT_coords)
 
-library(tmap)
-tm_shape(IT_coords) + tm_borders()
-
-library(mapview)
-mapview(IT_coords)
 
 coords_it<- loadCoordIT(unit = "regione", unit_subset = c(5, 10), matchWith = "number")
+str(coords_it)
 
 
 }

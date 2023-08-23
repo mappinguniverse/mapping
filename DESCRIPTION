@@ -9,7 +9,7 @@ Authors@R: c(person("Alessio", "Serafini", role = c("aut", "cre"),
              person("Giancarlo", "Ferrara", role = c("aut"),
                     email = "giancarlo.ferrara@gmail.com"))
 Depends: R (>= 3.5)
-Imports: tmap (>= 2.3-2), cartography (>= 2.3.0), graphics(>= 3.6.1),
+Imports: tmap (>= 3.3-3), cartography (>= 2.3.0), graphics(>= 3.6.1),
         ggplot2 (>= 3.2.1), sf(>= 1.0-0), utils,
         stats, dplyr(>= 0.8.3), leaflet(>= 2.0.3), tmaptools(>= 2.0-2),
         viridisLite(>= 0.3.0), grid(>= 3.6.1), httr(>= 1.4.1), curl(>=

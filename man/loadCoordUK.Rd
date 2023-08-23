@@ -56,11 +56,6 @@ Alessio Serafini
 UK_coords = loadCoordUK(unit = "country", year = "2020")
 str(UK_coords)
 
-library(tmap)
-tm_shape(UK_coords) + tm_borders()
-
-library(mapview)
-mapview(UK_coords)
 
 \donttest{
 

@@ -56,9 +56,6 @@ Alessio Serafini
 DE_coords = loadCoordDE(unit = "state")
 str(DE_coords)
 
-library(tmap)
-tm_shape(DE_coords) + tm_borders()
-
 
 \donttest{
 

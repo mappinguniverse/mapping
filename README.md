@@ -26,6 +26,3 @@ devtools::install_github("serafinialessio/mapping", build = TRUE, build_opts = c
 
 The main functions, generic functions and some examples are included in the vignette **A journey into *mapping* **, which is available as
 
-```{r}
-vignette("A journey into mapping")
-```

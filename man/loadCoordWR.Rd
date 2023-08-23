@@ -61,28 +61,6 @@ str(WR_ocde, 1)
 WR_continent = loadCoordWR(unit = "continent",res = "low")
 str(WR_continent, 1)
 
-\donttest{
-
-WR_type_income = loadCoordWR(unit = "type_income",res = "low")
-str(WR_type_income, 1)
-
-
-library(tmap)
-
-tm_shape(WR_coords) + tm_borders()
-tm_shape(WR_continent) + tm_borders()
-tm_shape(WR_ocde) + tm_borders()
-
-library(mapview)
-
-mapview(WR_coords)
-mapview(WR_continent)
-mapview(WR_ocde)
-
-coords_wr <- loadCoordWR(unit = "country", unit_subset = c("Italy", "Spain"))
-
-
-}
 
 }
 

@@ -43,10 +43,6 @@ A data.frame object with column indicating names, id, and the geometry to map.
 FR_coords = loadCoordFR(unit = "region", year = "2020")
 str(FR_coords)
 
-
-library(tmap)
-tm_shape(FR_coords) + tm_borders()
-
 }
 
 }

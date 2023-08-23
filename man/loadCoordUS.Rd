@@ -55,22 +55,6 @@ Alessio Serafini
 US_coords = loadCoordUS(unit = "state")
 str(US_coords)
 
-library(tmap)
-tm_shape(US_coords) + tm_borders()
-
-library(mapview)
-mapview(US_coords)
-
-## US
-
-US_coords = loadCoordUS()
-str(US_coords,1)
-
-library(tmap)
-tm_shape(US_coords) + tm_borders()
-
-library(mapview)
-mapview(US_coords)
 
 \donttest{
 coords_us<- loadCoordUS(unit = "state", unit_subset = c("Florida", "California"))

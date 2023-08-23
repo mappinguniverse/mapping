@@ -55,13 +55,8 @@ Alessio Serafini
 EU_coords = loadCoordEU(unit = "nuts0")
 str(EU_coords)
 
-library(tmap)
-tm_shape(EU_coords) + tm_borders()
-
-library(mapview)
-mapview(EU_coords)
-
 coords_eu_it_de <- loadCoordEU(unit = "nuts0", unit_subset = c("italy", "germany"))
+str(coords_eu_it_de)
 
 
 }
