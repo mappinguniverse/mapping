@@ -9,7 +9,7 @@ Creates an object with data and coordinates of class \code{IT} for Italy to use 
 \usage{
 IT(data, colID = NULL,
                unit = c("none","ripartizione", "regione", "provincia", "comune"),
-               year = c("2021","2020","2019", "2018", "2017"),
+               year = c("2023","2022","2021","2020","2019", "2018", "2017"),
                matchWith = c("name", "code","number"),
                show_it = TRUE, subset = NULL, add = NULL,
                new_var_names = NULL, aggregation_fun = sum,
@@ -71,18 +71,18 @@ An object of class \code{IT}, with data and coordinates to use in functions whic
 
 data("popIT")
 
-it <- IT(data = popIT, unit = "provincia", year = "2019")
+it <- IT(data = popIT, unit = "provincia", year = "2023")
 
 ### Adding two varaibles
 
 \donttest{
-it2 <- IT(data = popIT, unit = "provincia", year = "2019",
+it2 <- IT(data = popIT, unit = "provincia", year = "2023",
           add = ~I(maschi/totale) + I(femmine/totale) )
 
 
 
 ### Adding to variables and names
-it3 <- IT(data = popIT, unit = "provincia", year = "2019",
+it3 <- IT(data = popIT, unit = "provincia", year = "2023",
           add = ~I(maschi/totale) + I(femmine/totale),
           new_var_names = c("Per_Maschi", "Per_Femmine") )
 }

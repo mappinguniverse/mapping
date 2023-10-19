@@ -7,7 +7,7 @@
 Loads and returns names, ids, and coordinates for Italian statistical unit, ready to use with \code{mapping} functions and other "map" functions that accept an \code{sf} object.}
 \usage{
 loadCoordIT(unit = c("none","ripartizione", "regione", "provincia","comune"),
-            year = c("2021","2020", "2019", "2018", "2017"),
+            year = c("2023","2022","2021","2020", "2019", "2018", "2017"),
             unit_subset = NULL, matchWith = NULL,
             dir = NULL, use_cache = TRUE, use_internet = TRUE, crs = NULL)
 }
@@ -50,7 +50,7 @@ Alessio Serafini
 
 \examples{
 
-IT_coords = loadCoordIT(unit = "regione", year = "2020")
+IT_coords = loadCoordIT(unit = "regione", year = "2023")
 str(IT_coords)
 
 

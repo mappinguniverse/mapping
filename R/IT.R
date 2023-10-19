@@ -1,6 +1,6 @@
 
 loadCoordIT <- function(unit = c("none","ripartizione", "regione", "provincia","comune"),
-                        year = c("2021", "2020", "2019", "2018", "2017"),
+                        year = c("2023","2022","2021", "2020", "2019", "2018", "2017"),
                         unit_subset = NULL, matchWith = NULL,
                         dir = NULL,
                         use_cache = TRUE, use_internet = TRUE, crs = NULL)
@@ -119,7 +119,7 @@ if(download){
 
 checkNamesIT <- function(id,
                          unit = c("ripartizione", "regione", "provincia", "comune"),
-                         year = c("2021", "2020", "2019", "2018", "2017"),
+                         year = c("2023","2022", "2021", "2020", "2019", "2018", "2017"),
                          matchWith = c("name", "code", "number"),
                          return_logical = FALSE, print = TRUE, use_internet = TRUE)
 {
@@ -180,7 +180,7 @@ checkNamesIT <- function(id,
 
 IT <- function(data, colID = NULL,
                unit = c("none","ripartizione", "regione", "provincia", "comune"),
-               year = c("2021", "2020","2019", "2018", "2017"),
+               year = c("2023","2022", "2021", "2020","2019", "2018", "2017"),
                matchWith = c("name", "code","number"), show_it = TRUE,
                subset = NULL, add = NULL, new_var_names = NULL, aggregation_fun = sum, aggregation_unit = NULL, aggregation_var = NULL,
                facets = NULL, check.unit.names = TRUE, dir = NULL, use_cache = TRUE, print = FALSE, use_internet = TRUE, crs = NULL)

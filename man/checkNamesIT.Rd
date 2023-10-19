@@ -10,7 +10,7 @@ Check the differences between the names (or codes) given in input and the corres
 \usage{
 checkNamesIT(id,
              unit = c("ripartizione", "regione", "provincia","comune"),
-             year = c("2021","2020", "2019", "2018", "2017"),
+             year = c("2023","2022","2021","2020", "2019", "2018", "2017"),
              matchWith = c("name", "code", "number"),
              return_logical = FALSE, print = TRUE, use_internet = TRUE)
 }

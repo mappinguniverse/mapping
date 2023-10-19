@@ -1,4 +1,4 @@
-getNamesIT <- function(year = c("2021","2020","2019","2018", "2017"),
+getNamesIT <- function(year = c("2023","2022","2021","2020","2019","2018", "2017"),
                        unit = c("ripartizione", "regione", "provincia", "comune"),
                        all_levels = TRUE)
 {
