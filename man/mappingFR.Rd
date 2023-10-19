@@ -77,7 +77,7 @@ Return a map. For \code{tmap} type, the function also returns a \code{tmap} obje
 
 data("popFR")
 
-\dontrun{
+\donttest{
 
 fr <- FR(data = popFR)
 
@@ -93,12 +93,6 @@ mappingFR(data = fr, var = "population", subset = ~I(region == "corse"))
   
 mappingFR(data = fr, var = "population", facets =  "region")
   
-  
-###############
-# Interactive #
-###############
-
-mappingFR(data = fr, var = "population", type = "interactive")
 
 }
 

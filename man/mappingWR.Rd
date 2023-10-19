@@ -101,7 +101,7 @@ wr <- WR(data = popWR, colID = "country_code",
 
 mappingWR(data = wr, var = "total")
 
-\dontrun{
+\donttest{
 mappingWR(data = wr, var = c("male","female"))
 mappingWR(data = wr, var = "total", subset = ~I(iso2 == "IT"))
 mappingWR(data = wr, var = "total", subset = ~I(region == "Americas"))
@@ -112,7 +112,7 @@ mappingWR(data = wr, var = "total",
           facets = "name_wb")
 }
 
-\dontrun{
+\donttest{
 mappingWR(data = wr, var = "total", typeStatic = "choro.cart")
 
 
@@ -137,7 +137,7 @@ mappingWR(data = wr, var = c("male","female"), type = "interactive")
 mappingWR(data = wr, var = "total", subset = ~I(iso2 == "IT"), type = "interactive")
 }
 
-\dontrun{
+\donttest{
 mappingWR(data = wr, var = "total",
           subset = ~I(region == "Americas"), type = "interactive")
 mappingWR(data = wr, var = "total", type = "interactive",

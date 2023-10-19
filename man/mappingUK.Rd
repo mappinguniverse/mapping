@@ -85,7 +85,7 @@ uk <- UK(data = popUK, unit = "county", matchWith = "code", check.unit.names = F
 
 mappingUK(data = uk, var = "population")
 
-\dontrun{
+\donttest{
   mappingUK(data = uk, var = "population", subset = ~I(country == "england"))
   
   

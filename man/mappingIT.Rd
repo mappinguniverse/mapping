@@ -85,7 +85,7 @@ it <- IT(data = popIT, unit = "provincia", year = "2019", check.unit.names = FAL
 
 mappingIT(data = it, var = "totale")
 
-\dontrun{
+\donttest{
 mappingIT(data = it, var = "totale", subset = ~I(regione == "Lazio"))
 
 

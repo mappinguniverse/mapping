@@ -13,3 +13,8 @@
 - Add coordinates, object and map function for France
 - Add coordinates, object and map function for Germany
 - Bugs fixing
+
+# mapping 1.4 (2023 - 10)
+
+- Fix messagge from sp
+- remove vignettes

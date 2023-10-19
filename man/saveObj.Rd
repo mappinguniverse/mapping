@@ -20,7 +20,7 @@ saveObj(obj, name, as = c("RData", "csv", "json", "geojson", "shp"), ...)
 
 \examples{
 
-\dontrun{
+\donttest{
 
 data("popIT")
 it <- IT(data = popIT, unit = "provincia", year = "2019")

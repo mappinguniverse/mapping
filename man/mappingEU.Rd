@@ -95,7 +95,7 @@ mappingEU(data = euNuts2, var = "total", subset = ~I(nuts0_id == "IT"))
 mappingEU(data = euNuts2, var = "total",
           subset = ~I(nuts0_id == "ES"), facets = "nuts2")
 
-\dontrun{
+\donttest{
 mappingEU(data = euNuts2, var = "total", typeStatic = "choro.cart")
 
 mappingEU(data = euNuts2, var = "total", aggregation_unit = "nuts0", aggregation_fun = sum)
