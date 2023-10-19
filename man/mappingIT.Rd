@@ -77,7 +77,7 @@ Return a map. For \code{tmap} type, the function also returns a \code{tmap} obje
 \examples{
 data("popIT")
 
-it <- IT(data = popIT, unit = "provincia", year = "2019", check.unit.names = FALSE)
+it <- IT(data = popIT, unit = "provincia", year = "2023", check.unit.names = FALSE)
 
 ###############
 #   Statics   #
