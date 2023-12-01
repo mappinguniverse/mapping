@@ -18,7 +18,7 @@ Imports: tmap (>= 3.3-3), cartography (>= 2.3.0), graphics(>= 3.6.1),
         stringr(>= 1.4.0), s2(>= 1.0.6), stringi(>= 1.6.2)
 Suggests: knitr, DiagrammeR(>= 1.0.6.1), rmarkdown, validate, unrepx
 Repository: CRAN
-URL: https://github.com/serafinialessio/mapping
+URL: https://github.com/serafinialessio/mapping, https://serafinialessio.github.io/mapping/
 BugReports: https://github.com/serafinialessio/mapping/issues
 LazyData: yes
 LazyDataCompression: xz

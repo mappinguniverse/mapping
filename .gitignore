@@ -5,3 +5,5 @@
 .Rbuildignore
 *.Rproj
 .DS_Store
+/misc/
+docs

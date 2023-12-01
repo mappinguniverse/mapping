@@ -85,7 +85,7 @@ fr <- FR(data = popFR)
 #   Statics   #
 ###############
 
-mappingFR(fr, var = "population")
+
 
 
 mappingFR(data = fr, var = "population", subset = ~I(region == "corse"))

@@ -1,0 +1,414 @@
+---
+title: "A journey into *mapping*"
+output: 
+  rmarkdown::html_vignette:
+    keep_md: true 
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{A journey into mapping}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, collapse = TRUE, 
+                      fig.width = 7, fig.height = 4,
+                      fig.align = "center", message = FALSE, warning = FALSE)
+
+```
+
+## Introduction 
+
+**mapping** allows to easily show data using maps, without concern about the geographical coordinates which are provided in the package and automatically link with the data.
+The mapping functions use the already available and well implemented function in tmap, cartography, and leaflet packages.
+
+Since different countries have different geographical structure, and, in particular, different statistical unit or different subdivision, **mapping** provide a single function for static and interactive plots of such subvisions:
+
+| Country | Function Static|
+------------|------------|
+| World | `mappingWR()` | 
+| European Union| `mappingEU()`|
+| Italy | `mappingIT()` |
+| United States of America | `mappingUS()`|
+
+In addition a generic `mapping()` function is also provided, and explained in a specific section.
+
+The most important step is to link each country, partition or statistical unit with their coordinates. The package also provides specific function to automatically build a object with data and coordinates: 
+
+| Coordinates | Function| Object Class | 
+------------|------------| -------------|
+| World | `WR()` | **WR** |
+| European Union| `EU()`| **EU** |
+| Italy | `IT()` | **IT** |
+| United States of America | `US()`| **US** |
+
+The data can be linked first building  the object with its specific function or using the `mapping` function which automatically will both link, and then map the input data.
+
+<br><br>
+
+The CRAN version can be loaded as follows:
+```{r, message = FALSE}
+library('mapping')
+```
+
+or the development version from GitHub:
+
+```{r, message = FALSE, eval=FALSE}
+remotes::install_github('dataallaround/mapping')
+```
+
+The population data, available in the package, will be used to describe the package features 
+
+```{r}
+data("popWR")
+str(popWR)
+```
+
+```{r}
+data("popEU")
+str(popEU)
+```
+
+```{r}
+data("popIT")
+str(popIT)
+```
+```{r}
+data("popUS")
+str(popUS)
+```
+
+
+## Load coordinates and check names
+
+Coordinates can be separately downloaded using this specific functions
+
+
+| Coordinates | Function| 
+------------|------------|
+| World | `loadCoordWR()` |
+| European Union| `loadCoordEU()`|
+| Italy | `loadCoordIT()` |
+| United States of America | `loadCoordUS()`|
+
+Coordinates are download from the GitHub repository \url{https://github.com/dataallaround/geospatial}, which provides .geojson and .RData files with coordinates, which return an object of class `sf`.
+
+```{r}
+coord_eu <- loadCoordEU(unit = "nuts0")
+```
+
+The `unit` argument in the `load` functions, indicates the type of statistical unit, geographical subdivision or level of aggregation, which is specific for the country. For example, in this case, the EU has different statistical units, and we are interested to get coordinates for "nuts0", i.e. for European countries.
+
+```{r}
+library(tmap)
+tm_shape(coord_eu) + tm_borders()
+
+library(mapview)
+mapview(coord_eu)
+```
+
+Returning an object of class `sf`, we can also use the mapping function available in the other R packages. 
+
+
+Note that, the data are downloaded from an online repository, and then an internet connection should be preferred. Nevertheless, if the `use_internet` argument set to `FALSE`, we will get the coordinates locally available in the package.
+
+
+The names provided from the user, and the names available in the package have to be the same to link the coordinate. `checkNames` functions will return the nomatching names:
+
+```{r}
+checkNamesIT(popIT$ID, unit = "provincia")
+```
+
+
+`GetNames` functions returns the names used in the packages for each `unit`.
+
+```{r}
+getNamesEU(unit = "nuts0")
+getNamesEU(unit = "nuts0", all_levels = FALSE)
+```
+
+
+
+## Building a **mapping** object
+
+Before building a map of our data, we have to link the **ids** with coordinates, which is automatic in `mapping` package using specific functions:
+
+| Coordinates | Function| Object Class | 
+------------|------------| -------------|
+| World | `WR()` | **WR** |
+| European Union| `EU()`| **EU** |
+| Italy | `IT()` | **IT** |
+| United States of America | `US()`| **US** |
+
+These are the functions to build the dataset with data and coordinates, and, using specific arguments, we can manipulate the data before mapping.
+
+The `popIT`, as showed in the previous section, does not contain any information about the geographical geometries:
+
+```{r}
+str(popIT)
+```
+
+then, the coordinates are added as follows:
+
+```{r}
+it <- IT(data = popIT, unit = "provincia", year = "2018",colID = "ID")
+```
+
+We have to specify the type of statistical unit, the column containing the ids and, if necessary, the year of the subdivision. The functions will automatically download the coordinates linking them to the data. In this example, we have data about the population of the Italian province in 2018.
+
+```{r}
+library(tmap)
+tm_shape(it) + tm_borders() + tm_fill("totale")
+```
+
+We have missing observation because the names in the data are different from the name in the package, as showed before.
+
+The `unit` belongs to different levels of aggregation/division. We can think at this as an hierarchy, i.e. starting from a subdivision we can know all the larger aggregation and then building the bigger geographical object. 
+
+
+```{r, echo=FALSE}
+DiagrammeR::grViz("
+  digraph graph2 {
+  
+  graph [layout = dot, rankdir = LR]
+  
+  # node definitions with substituted label text
+  node [shape = oval]
+  a [label = 'level0']
+  b [label = 'level1']
+  c [label = 'level2']
+  d [label = 'level3']
+  e [label = 'level4']
+
+  
+  e -> d -> c -> b -> a
+  }
+  
+  ",height = 100)
+```
+
+This diagram shows an example of this hierarchy, with the largest level, level0, to the smaller, level4. If we have a level3 unit, we will have all the largest one until the level0.
+
+In linking the data and the coordinates, the functions available in this packages will return also the information about larger units. For example, in the Italian case the `it` data will have a column indicating the `ripartizione` and `regione`, which are larger aggregates than `provincia`. Building the hierarchy  is available for all functions in this section and it is also available in the `loading` functions.
+
+```{r}
+str(it,1)
+```
+
+
+Data can be subsets before mapping
+
+```{r}
+it <- IT(data = popIT, unit = "provincia", 
+         year = "2018",colID = "ID",
+         subset = ~ I(regione == "Lazio"))
+```
+
+in this case, we use the hierarchy to retrieve only the data of "Lazio" region. 
+
+```{r}
+library(tmap)
+tm_shape(it) + tm_borders()
+```
+
+Suppose now to want the percentage of male and female, but we have only the total number:
+
+```{r}
+it <- IT(data = popIT, unit = "provincia", 
+         year = "2018",colID = "ID",
+         add = ~I(maschi/totale) + I(femmine/totale), 
+         new_var_names = c("Male percentage", "Female percentage"),
+         print = FALSE)
+
+str(it,1)
+```
+
+Now, we have now the percentage and we have named the new variables.
+
+Note that, we can also build directly this object in the `mapping` functions, but we can not manipulate the data and build an unique object to be used in different mapping functions.
+
+
+Countries ids or units may have different names. For example, we can have a iso2 name instead of a formal name. The `matchWith` argument indicates the type of names we have to link. 
+
+
+```{r}
+eu <- EU(data = popEU, unit = "nuts0", colID = "GEO", 
+         matchWith = "id", check.unit.names = FALSE)
+```
+
+The `popEU` data have *nuts* expressed with ids, which is specified in the `matchWith`.
+
+
+## Static maps
+
+We start with a map of the European Union countries
+
+```{r}
+mappingEU(data = coord_eu)
+```
+
+In this case, we do not provide any data to map. Now, we suppose to want to look at the distribution of population among European countries
+
+```{r}
+eu <- EU(data = popEU, unit = "nuts0", colID = "GEO", 
+         matchWith = "iso2", check.unit.names = FALSE)
+mappingEU(eu, var = "total")
+```
+
+where, `matchWith` is equal to "iso2" because the id name in `popEU` are expressed according to iso2 code, instead of iso3 or country names.
+
+It is equivalent to use mapping function without building as `EU` object 
+
+```{r}
+mappingEU(data = popEU,unit = "nuts0", colID = "GEO", matchWith = "iso2", var = "total")
+```
+
+Of course, the mapping function provides arguments to work and modify data before mapping.
+
+The `loadCoord` functions, as explained in the previous section, automatically return all the bigger statistical unit aggregation. We can easily use this in mapping functions, in which the value of the variables are `sum` for each `aggragation_unit`
+
+```{r}
+eu <- EU(data = popEU, unit = "nuts1", colID = "GEO", 
+         matchWith = "id", check.unit.names = FALSE)
+mappingEU(eu, var = "total")
+
+mappingEU(eu, var = "total", aggregation_unit = "nuts0", aggregation_fun = sum)
+```
+
+We can also provide multiple variables to generate multiple maps
+
+```{r}
+mappingEU(eu, var = c("male","female"))
+```
+
+or, if we are not interested in the entire data but in a specific subset, we can apply a subset statement before mapping
+
+```{r}
+mappingEU(eu, var = "total", 
+          subset = ~I(country == "Spain" | country == "Italy"))
+```
+
+
+Let's look at USA example.
+
+```{r}
+us <- US(data = popUS, unit = "state", matchWith = "name")
+mappingUS(us)
+```
+
+```{r}
+mappingUS(us, var = "population")
+mappingUS(us, var = "population", options = mapping.options(nclass = 10, legend.portrait = FALSE))
+
+mappingUS(us, var = "population", add_text = "state_id",
+          options = mapping.options(nclass = 10, legend.portrait = FALSE))
+```
+
+The `facetes` argument returns the small multiples, and in this case, It maps all the divisions.
+
+```{r}
+mappingUS(us, var = "population", aggregation_unit = "division", facets = "division")
+```
+
+If we are not interested at only the Northeast region, we can apply a subset statement before mapping
+
+```{r}
+mappingUS(us, var = "population", subset = ~I(region == "Northeast"), facets = "id")
+```
+
+## Interactive maps
+
+The interactive map functions work as the static functions and they share the same argument.
+
+```{r}
+eu <- EU(data = popEU, unit = "nuts0", colID = "GEO", 
+         matchWith = "id", check.unit.names = FALSE)
+mappingEU(eu, var = "total", type = "interactive")
+
+```
+
+```{r}
+mappingEU(eu, var = "total", type = "interactive",
+                      subset = ~I(country == "Spain" | country == "Italy"))
+```
+
+or aggregating for countries ("nuts0")
+
+```{r}
+mappingEU(eu, var = "total", type = "interactive",
+                      aggregation_unit = "nuts0")
+```
+
+Multiple variable will provide a single interactive map with different layers:
+```{r}
+mappingEU(eu, var = c("male","female"), type = "interactive")
+```
+
+and also the `facets` is implemented for interactive maps.
+
+## A generic `mapping()` function 
+
+The package also provide a generic function to map data, `mapping`. This accept object of class `sf`, `WR`, `EU`, `IT`, and `US`.
+
+
+```{r}
+library(dplyr)
+
+data("popIT")
+popIT <- popIT
+coords <- loadCoordIT(unit = "provincia", year = '2019')
+cr <- left_join(coords, popIT, by = c( "provincia" = "ID"))
+mapping(cr)
+mapping(cr, var = "maschi")
+```
+
+```{r}
+library(sf)
+nc = st_read(system.file("shape/nc.shp", package="sf"))
+class(nc)
+mapping(nc)
+```
+
+
+
+
+## Layout options
+
+Aesthetic options are controlled by `mapping.options()` function. General options can be retrieved 
+
+```{r, eval=FALSE}
+mapping.options()
+```
+
+single or multiple options may be retrieved 
+
+```{r}
+mapping.options("palette.cont")
+mapping.options("legend.position")
+```
+and we can globally change until a new R session, as follows
+
+```{r}
+mapping.options(legend.position = c("left","bottom"))
+mapping.options("legend.position")
+```
+
+Options can be changed locally in `mapping` functions:
+
+```{r}
+map <- mappingEU(eu, var = "total")
+map_options <- mappingEU(eu, var = "total", 
+                         options = mapping.options(list(legend.position = c("left","bottom"),
+                                                        title = "EU total population",
+                                                        map.frame = FALSE,
+                                                        col.style = "pretty")))
+
+library(tmap)
+tmap_arrange(map, map_options)
+mapping.options.reset()
+```
+
+or globally outside the functions. Original options can be reseted using `mapping.options.reset()`.
+
+
+

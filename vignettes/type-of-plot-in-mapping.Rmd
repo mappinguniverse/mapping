@@ -1,0 +1,105 @@
+---
+title: "Type of plots in *mapping*"
+output: 
+  rmarkdown::html_vignette:
+    keep_md: true 
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{Type of plot in mapping}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, collapse = TRUE, 
+                      fig.width = 7, fig.height = 4,
+                      fig.align = "center", message = FALSE, warning = FALSE)
+
+```
+
+The CRAN version can be loaded as follows:
+
+```{r, message = FALSE}
+library('mapping')
+```
+
+or the development version from GitHub:
+
+```{r, message = FALSE, eval=FALSE}
+remotes::install_github('dataallaround/mapping')
+```
+
+Examples data can be loaded using:
+```{r}
+data("popIT")
+it_pr <- IT(data = popIT, unit = "provincia", year = "2019", check.unit.names = FALSE)
+str(it_pr,1)
+```
+
+
+## Static Map
+
+### "tmap"
+
+```{r}
+mappingIT(data = it_pr, var = "totale")
+mappingIT(data = it_pr, var = c("maschi", "femmine"))
+mappingIT(data = it_pr, var = c("maschi", "femmine"), options = mapping.options(palette.cont = c("Greens", "Blues"), legend.position = c("left","bottom")))
+
+mappingIT(data = it_pr, var = "ripartizione")
+mappingIT(data = it_pr, var = "totale", facets = "ripartizione")
+
+mappingIT(data = it_pr, var = "totale", add_text = "code")
+
+```
+
+### "choro.cart"
+
+```{r}
+mappingIT(data = it_pr, var = "totale", typeStatic = "choro.cart")
+mappingIT(data = it_pr, var = c("maschi", "femmine"), typeStatic = "choro.cart")
+mappingIT(data = it_pr, var = c("maschi", "femmine"), typeStatic = "choro.cart", mapping.options(palette.cont = c("Greens", "Blues")))
+```
+
+### "typo"
+
+```{r}
+mappingIT(data = it_pr, var = "ripartizione", typeStatic = "typo")
+mappingIT(data = it_pr, var = c("maschi", "femmine"), typeStatic = "typo")
+mappingIT(data = it_pr, var = c("maschi", "femmine"), typeStatic = "typo", mapping.options(palette.cont = c("Greens", "Blues")))
+```
+
+### "bar"
+
+```{r}
+mappingIT(data = it_pr, var = "totale", typeStatic = "bar")
+```
+
+
+## Interactive Maps
+
+
+```{r}
+mappingIT(data = it_pr, var = "totale", type = "interactive")
+mappingIT(data = it_pr, var = "totale", type = "interactive",
+          options = mapping.options(legend.position = c("left","bottom")))
+
+mappingIT(data = it_pr, var = c("maschi", "femmine"), type = "interactive", 
+          options = mapping.options(interactive.control.collapse = FALSE))
+mappingIT(data = it_pr, var = c("maschi", "femmine"), type = "interactive",
+          options = mapping.options(palette.cont = c("BuGn", "BuPu")))
+
+
+mappingIT(data = it_pr, var = "totale", type = "interactive", 
+          options = mapping.options(col.style = "pretty"))
+mappingIT(data = it_pr, var = "totale", type = "interactive", 
+          options = mapping.options(col.style = "equal"))
+mappingIT(data = it_pr, var = "totale", type = "interactive", 
+          options = mapping.options(col.style = "equal", nclass = 7))
+
+mappingIT(data = it_pr, var = "ripartizione", type = "interactive")
+
+mappingIT(data = it_pr, var = "totale", type = "interactive", facets = "ripartizione")
+          
+```
+
