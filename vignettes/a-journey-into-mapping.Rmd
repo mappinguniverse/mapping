@@ -1,5 +1,5 @@
 ---
-title: "A journey into *mapping*"
+title: "A journey into mapping"
 output: 
   rmarkdown::html_vignette:
     keep_md: true 
