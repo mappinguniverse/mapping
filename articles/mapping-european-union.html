@@ -86,7 +86,7 @@
     
 <p>The CRAN version can be loaded as follows:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://serafinialessio.github.io/mapping/index.html">'mapping'</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://mappinguniverse.github.io/mapping/index.html" class="external-link">'mapping'</a></span><span class="op">)</span></span></code></pre></div>
 <p>or the development version from GitHub:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">'serafinialessio/mapping'</span><span class="op">)</span></span></code></pre></div>
@@ -125,8 +125,8 @@ following:</p>
 <p>where <strong>level 0</strong> is the largest unit (country), and
 <strong>level 4</strong> the smallest unit. In addition Urban Audit
 (“urau”) are also provided.</p>
-<div id="htmlwidget-cf65bed32c2a454a6ca2" style="width:672px;height:100px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cf65bed32c2a454a6ca2">{"x":{"diagram":"\n  digraph graph2 {\n  \n  graph [layout = dot, rankdir = LR]\n  \n  # node definitions with substituted label text\n  node [shape = oval]\n  a [label = \"nuts0\"]\n  b [label = \"nuts1\"]\n  c [label = \"nuts2\"]\n  d [label = \"nuts3\"]\n\n  \n  d -> c -> b -> a\n  }\n  \n  ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><p>The diagram show the hierarchy used in the <code><a href="../reference/EU.html">EU()</a></code> to build
+<div id="htmlwidget-af062fce422c8ee52c54" style="width:672px;height:100px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-af062fce422c8ee52c54">{"x":{"diagram":"\n  digraph graph2 {\n  \n  graph [layout = dot, rankdir = LR]\n  \n  # node definitions with substituted label text\n  node [shape = oval]\n  a [label = \"nuts0\"]\n  b [label = \"nuts1\"]\n  c [label = \"nuts2\"]\n  d [label = \"nuts3\"]\n\n  \n  d -> c -> b -> a\n  }\n  \n  ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><p>The diagram show the hierarchy used in the <code><a href="../reference/EU.html">EU()</a></code> to build
 the object to map. Smaller aggregate/levels have all the information of
 the bigger aggregates. For example, if we have “nuts2”, we have also all
 the information until the country level, “nuts0”.</p>
