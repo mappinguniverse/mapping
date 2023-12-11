@@ -22,14 +22,14 @@ loadCoordUS(unit = c("country", "region", "division", "state",
 \item{matchWith}{the type of id}
 \item{dir}{local directory in which shape files are stored}
   \item{use_cache}{a logical value indicating whether to use the cache}
-  \item{use_internet}{a logical value indicating wheter the coordinates are downloaded from \url{https://github.com/dataallaround/geospatial}. If \code{FALSE} the maps downloaded during package installation will be used}
+  \item{use_internet}{a logical value indicating wheter the coordinates are downloaded from \url{https://github.com/mappinguniverse/geospatial}. If \code{FALSE} the maps downloaded during package installation will be used}
       \item{crs}{coordinate reference system. Look at \code{\link{st_crs}}}
 
 }
 
 
 \details{
-Coordinates are downloaded from the Github repo \url{https://github.com/dataallaround/geospatial} from US folder \url{https://github.com/dataallaround/geospatial/tree/master/US}.
+Coordinates are downloaded from the Github repo \url{https://github.com/mappinguniverse/geospatial} from US folder \url{https://github.com/mappinguniverse/geospatial/tree/master/US}.
 
 If \code{unit} is not specified, borders of the USA countries are loaded.
 }
@@ -43,7 +43,7 @@ Alessio Serafini
 }
 
 \references{
-\url{https://github.com/dataallaround/geospatial}
+\url{https://github.com/mappinguniverse/geospatial}
 }
 
 \seealso{

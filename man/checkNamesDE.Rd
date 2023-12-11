@@ -25,7 +25,7 @@ checkNamesDE(id, unit = c("state", "district", "municipal", "municipality"),
 }
   \item{return_logical}{a logical value indicating whether nomatched id are returned.}
   \item{print}{a logical value indicating whether print the nomatched names}
-  \item{use_internet}{a logical value indicating wheter the coordinates are downloaded from \url{https://github.com/dataallaround/geospatial}. If \code{FALSE} the maps downloaded during package installation will be used.
+  \item{use_internet}{a logical value indicating wheter the coordinates are downloaded from \url{https://github.com/mappinguniverse/geospatial}. If \code{FALSE} the maps downloaded during package installation will be used.
   
 }
 }

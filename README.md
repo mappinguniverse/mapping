@@ -19,7 +19,7 @@ install.packages("mapping")
 or the development version from GitHub:
 
 ```{r}
-devtools::install_github("serafinialessio/mapping", build = TRUE, build_opts = c("--no-resave-data", "--no-manual"))
+devtools::install_github("mappinguniverse/mapping", build = TRUE, build_opts = c("--no-resave-data", "--no-manual"))
 ```
 
 ## Usage

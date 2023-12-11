@@ -1,0 +1,102 @@
+---
+title: "mapping European Union"
+output: 
+  rmarkdown::html_vignette:
+    keep_md: true 
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{mapping European Union}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      collapse = TRUE, 
+                      fig.width = 7, fig.height = 4, fig.align = "center", 
+                      message = FALSE, warning = FALSE)
+```
+
+
+
+The CRAN version can be loaded as follows:
+
+```{r, message = FALSE}
+library('mapping')
+```
+
+or the development version from GitHub:
+
+```{r, message = FALSE, eval=FALSE}
+remotes::install_github('serafinialessio/mapping')
+```
+
+
+The European geographical aggregates nomenclature, called NUTS (Nomenclature des unités territoriales statistiques)) are the following:
+
+| Function argument | Aggregates | Level | 
+------------|------------| -------------|
+| "nuts0" | European countries | level 0 |
+| "nuts1" | European divisions for each country| level 1 |
+| "nuts2" | European regions for each country| level 2 |
+| "nuts3" | European municipalities for each country| level 3 |
+
+where **level 0** is the largest unit (country), and **level 4** the smallest unit. In addition Urban Audit ("urau") are also provided.
+
+```{r, echo=FALSE}
+DiagrammeR::grViz("
+  digraph graph2 {
+  
+  graph [layout = dot, rankdir = LR]
+  
+  # node definitions with substituted label text
+  node [shape = oval]
+  a [label = 'nuts0']
+  b [label = 'nuts1']
+  c [label = 'nuts2']
+  d [label = 'nuts3']
+
+  
+  d -> c -> b -> a
+  }
+  
+  ",height = 100)
+```
+
+The diagram show the hierarchy used in the `EU()` to build the object to map. Smaller aggregate/levels have all the information of the bigger aggregates. For example, if we have "nuts2", we have also all the information until the country level, "nuts0".
+
+
+
+Level may have names expressed in different ways. The package provides: 
+
+|  Names | Code |  
+------------|------------| 
+| Nuts names | `nuts` | 
+| Nuts id code | `id` | 
+| iso2 coutry code | `iso2` | 
+| iso3 country code | `iso3` |
+
+This can be specified in `matchWith` argument,depending on the **ids** in the input data.  
+
+
+```{r}
+eu_level0 <- loadCoordEU(unit = "nuts0")
+mappingEU(eu_level0)
+```
+
+```{r}
+eu_level0 <- loadCoordEU(unit = "nuts1")
+mappingEU(eu_level0)
+```
+
+
+```{r}
+eu_level0 <- loadCoordEU(unit = "nuts2")
+mappingEU(eu_level0)
+```
+
+```{r}
+eu_level0 <- loadCoordEU(unit = "nuts3")
+mappingEU(eu_level0)
+```
+
