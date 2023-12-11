@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">mapping</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +25,10 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/a-journey-into-mapping.html">A journey into mapping</a>
+    <a class="dropdown-item" href="../articles/mapping-european-union.html">mapping European Union</a>
+    <a class="dropdown-item" href="../articles/mapping-italy.html">mapping Italy</a>
     <a class="dropdown-item" href="../articles/mapping-using-aggregated-units.html">mapping using aggregated units</a>
+    <a class="dropdown-item" href="../articles/mapping-world.html">mapping World</a>
   </div>
 </li>
 <li class="nav-item">
@@ -35,7 +38,7 @@
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
       <ul class="navbar-nav"><li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/serafinialessio/mapping/" aria-label="github">
+  <a class="external-link nav-link" href="https://github.com/mappinguniverse/mapping/" aria-label="github">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -108,89 +111,89 @@
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">namesEU</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">namesEU</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> List of 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ 2016:'data.frame':	1517 obs. of  13 variables:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id          : chr [1:1517] "DE254" "DE255" "DE256" "DE257" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ country     : chr [1:1517] "Germany" "Germany" "Germany" "Germany" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso2        : chr [1:1517] "DE" "DE" "DE" "DE" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso3        : chr [1:1517] "DEU" "DEU" "DEU" "DEU" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ country_code: int [1:1517] 276 276 276 276 276 276 276 276 276 276 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0_id    : chr [1:1517] "DE" "DE" "DE" "DE" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1_id    : chr [1:1517] "DE2" "DE2" "DE2" "DE2" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2_id    : chr [1:1517] "DE25" "DE25" "DE25" "DE25" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts3_id    : chr [1:1517] "DE254" "DE255" "DE256" "DE257" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0       : chr [1:1517] "germany" "germany" "germany" "germany" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1       : chr [1:1517] "bayern" "bayern" "bayern" "bayern" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2       : chr [1:1517] "mittelfranken" "mittelfranken" "mittelfranken" "mittelfranken" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts3       : chr [1:1517] "nürnberg, kreisfreie stadt" "schwabach, kreisfreie stadt" "ansbach, landkreis" "erlangen-höchstadt" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ 2013:'data.frame':	1475 obs. of  13 variables:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id          : chr [1:1475] "AT111" "AT112" "AT113" "AT121" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ country     : chr [1:1475] "Austria" "Austria" "Austria" "Austria" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso2        : chr [1:1475] "AT" "AT" "AT" "AT" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso3        : chr [1:1475] "AUT" "AUT" "AUT" "AUT" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ country_code: int [1:1475] 40 40 40 40 40 40 40 40 40 40 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0_id    : chr [1:1475] "AT" "AT" "AT" "AT" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1_id    : chr [1:1475] "AT1" "AT1" "AT1" "AT1" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2_id    : chr [1:1475] "AT11" "AT11" "AT11" "AT12" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts3_id    : chr [1:1475] "AT111" "AT112" "AT113" "AT121" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0       : chr [1:1475] "austria" "austria" "austria" "austria" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1       : chr [1:1475] "ostösterreich" "ostösterreich" "ostösterreich" "ostösterreich" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2       : chr [1:1475] "burgenland (at)" "burgenland (at)" "burgenland (at)" "niederösterreich" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts3       : chr [1:1475] "mittelburgenland" "nordburgenland" "südburgenland" "mostviertel-eisenwurzen" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ 2010:'data.frame':	1449 obs. of  13 variables:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id          : chr [1:1449] "AT111" "AT112" "AT113" "AT121" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ country     : chr [1:1449] "Austria" "Austria" "Austria" "Austria" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso2        : chr [1:1449] "AT" "AT" "AT" "AT" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso3        : chr [1:1449] "AUT" "AUT" "AUT" "AUT" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ country_code: int [1:1449] 40 40 40 40 40 40 40 40 40 40 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0_id    : chr [1:1449] "AT" "AT" "AT" "AT" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1_id    : chr [1:1449] "AT1" "AT1" "AT1" "AT1" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2_id    : chr [1:1449] "AT11" "AT11" "AT11" "AT12" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts3_id    : chr [1:1449] "AT111" "AT112" "AT113" "AT121" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0       : chr [1:1449] "austria" "austria" "austria" "austria" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1       : chr [1:1449] "ostösterreich" "ostösterreich" "ostösterreich" "ostösterreich" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2       : chr [1:1449] "burgenland (at)" "burgenland (at)" "burgenland (at)" "niederösterreich" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts3       : chr [1:1449] "mittelburgenland" "nordburgenland" "südburgenland" "mostviertel-eisenwurzen" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ 2006:'data.frame':	1458 obs. of  13 variables:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id          : chr [1:1458] "PL614" "DE80B" "DE600" "UKE12" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ country     : chr [1:1458] "Poland" "Germany" "Germany" "United Kingdom of Great Britain and Northern Ireland" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso2        : chr [1:1458] "PL" "DE" "DE" "GB" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso3        : chr [1:1458] "POL" "DEU" "DEU" "GBR" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ country_code: int [1:1458] 616 276 276 826 616 276 276 826 276 826 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0_id    : chr [1:1458] "PL" "DE" "DE" "UK" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1_id    : chr [1:1458] "PL6" "DE8" "DE6" "UKE" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2_id    : chr [1:1458] "PL61" "DE80" "DE60" "UKE1" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts3_id    : chr [1:1458] "PL614" "DE80B" "DE600" "UKE12" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0       : chr [1:1458] "poland" "germany" "germany" "united kingdom of great britain and northern ireland" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1       : chr [1:1458] "region północny" "mecklenburg-vorpommern" "hamburg" "yorkshire and the humber" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2       : chr [1:1458] "kujawsko-pomorskie" "mecklenburg-vorpommern" "hamburg" "east yorkshire and northern lincolnshire" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts3       : chr [1:1458] "grudziądzki" "mecklenburg-strelitz" "hamburg" "east riding of yorkshire" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ 2003:'data.frame':	1429 obs. of  13 variables:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id          : chr [1:1429] "FI1A3" "SE082" "SE081" "FI134" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ country     : chr [1:1429] "Finland" "Sweden" "Sweden" "Finland" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso2        : chr [1:1429] "FI" "SE" "SE" "FI" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso3        : chr [1:1429] "FIN" "SWE" "SWE" "FIN" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ country     : Factor w/ 33 levels "Austria","Belgium",..: 9 30 30 9 22 11 22 11 24 11 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso2        : Factor w/ 33 levels "AT","BE","BG",..: 11 30 30 11 25 7 25 7 27 7 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso3        : Factor w/ 33 levels "AUT","BEL","BGR",..: 11 32 32 11 25 7 25 7 27 7 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ country_code: int [1:1429] 246 752 752 246 528 276 528 276 616 276 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0_id    : chr [1:1429] "FI" "SE" "SE" "FI" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1_id    : chr [1:1429] "FI1" "SE0" "SE0" "FI1" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2_id    : chr [1:1429] "FI1A" "SE08" "SE08" "FI13" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0_id    : Factor w/ 33 levels "AT","BE","BG",..: 11 29 29 11 24 7 24 7 26 7 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1_id    : Factor w/ 111 levels "AT1","AT2","AT3",..: 37 85 85 37 69 25 69 20 75 21 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2_id    : Factor w/ 309 levels "AT11","AT12",..: 108 239 239 105 192 81 192 63 211 70 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts3_id    : chr [1:1429] "FI1A3" "SE082" "SE081" "FI134" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0       : chr [1:1429] "finland" "sweden" "sweden" "finland" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1       : chr [1:1429] "manner-suomi" "sverige" "sverige" "manner-suomi" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2       : chr [1:1429] "pohjois-suomi" "övre norrland" "övre norrland" "itä-suomi" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts3       : chr [1:1429] "lappi" "norrbottens län" "västerbottens län" "kainuu" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0       : Factor w/ 33 levels "Austria","Belgium",..: 9 30 30 9 22 11 22 11 24 11 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1       : Factor w/ 111 levels "Akdeniz","Åland",..: 55 100 100 55 106 87 106 58 76 64 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2       : Factor w/ 309 levels "Abruzzo","Adana",..: 209 201 201 114 308 158 308 30 298 63 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts3       : chr [1:1429] "Lappi" "Norrbottens län" "Västerbottens län" "Kainuu" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ 2006:'data.frame':	1458 obs. of  13 variables:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id          : chr [1:1458] "PL614" "DE80B" "DE600" "UKE12" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ country     : Factor w/ 35 levels "Austria","Belgium",..: 26 11 11 35 26 11 11 35 11 35 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso2        : Factor w/ 35 levels "AT","BE","BG",..: 29 7 7 13 29 7 7 13 7 13 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso3        : Factor w/ 35 levels "AUT","BEL","BGR",..: 29 7 7 13 29 7 7 13 7 13 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ country_code: int [1:1458] 616 276 276 826 616 276 276 826 276 826 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0_id    : Factor w/ 35 levels "AT","BE","BG",..: 28 7 7 35 28 7 7 35 7 35 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1_id    : Factor w/ 115 levels "AT1","AT2","AT3",..: 79 19 17 106 76 20 20 105 19 106 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2_id    : Factor w/ 314 levels "AT11","AT12",..: 220 62 58 285 214 66 66 284 62 285 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts3_id    : chr [1:1458] "PL614" "DE80B" "DE600" "UKE12" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0       : Factor w/ 35 levels "Austria","Belgium",..: 26 11 11 35 26 11 11 35 11 35 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1       : Factor w/ 115 levels "Akdeniz","Åland",..: 80 53 32 107 84 55 55 66 53 107 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2       : Factor w/ 314 levels "Abruzzo","Adana",..: 126 156 94 71 198 281 281 158 156 71 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts3       : chr [1:1458] "Grudziądzki" "Mecklenburg-Strelitz" "Hamburg" "East Riding of Yorkshire" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ 2010:'data.frame':	1449 obs. of  13 variables:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id          : chr [1:1449] "AT111" "AT112" "AT113" "AT121" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ country     : Factor w/ 35 levels "Austria","Belgium",..: 1 1 1 1 1 1 1 1 1 1 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso2        : Factor w/ 35 levels "AT","BE","BG",..: 1 1 1 1 1 1 1 1 1 1 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso3        : Factor w/ 35 levels "AUT","BEL","BGR",..: 1 1 1 1 1 1 1 1 1 1 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ country_code: int [1:1449] 40 40 40 40 40 40 40 40 40 40 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0_id    : Factor w/ 35 levels "AT","BE","BG",..: 1 1 1 1 1 1 1 1 1 1 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1_id    : Factor w/ 115 levels "AT1","AT2","AT3",..: 1 1 1 1 1 1 1 1 1 1 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2_id    : Factor w/ 312 levels "AT11","AT12",..: 1 1 1 2 2 2 2 2 2 2 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts3_id    : chr [1:1449] "AT111" "AT112" "AT113" "AT121" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0       : Factor w/ 35 levels "Austria","Belgium",..: 1 1 1 1 1 1 1 1 1 1 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1       : Factor w/ 115 levels "Akdeniz","Åland",..: 70 70 70 70 70 70 70 70 70 70 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2       : Factor w/ 312 levels "Abruzzo","Adana, Mersin",..: 33 33 33 165 165 165 165 165 165 165 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts3       : chr [1:1449] "Mittelburgenland" "Nordburgenland" "Südburgenland" "Mostviertel-Eisenwurzen" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ 2013:'data.frame':	1475 obs. of  13 variables:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id          : chr [1:1475] "AT111" "AT112" "AT113" "AT121" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ country     : Factor w/ 35 levels "Austria","Belgium",..: 1 1 1 1 1 1 1 1 1 1 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso2        : Factor w/ 35 levels "AT","BE","BG",..: 1 1 1 1 1 1 1 1 1 1 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso3        : Factor w/ 35 levels "AUT","BEL","BGR",..: 1 1 1 1 1 1 1 1 1 1 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ country_code: int [1:1475] 40 40 40 40 40 40 40 40 40 40 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0_id    : Factor w/ 35 levels "AT","BE","BG",..: 1 1 1 1 1 1 1 1 1 1 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1_id    : Factor w/ 115 levels "AT1","AT2","AT3",..: 1 1 1 1 1 1 1 1 1 1 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2_id    : Factor w/ 315 levels "AT11","AT12",..: 1 1 1 2 2 2 2 2 2 2 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts3_id    : chr [1:1475] "AT111" "AT112" "AT113" "AT121" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0       : Factor w/ 35 levels "Austria","Belgium",..: 1 1 1 1 1 1 1 1 1 1 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1       : Factor w/ 115 levels "AKDENIZ","ÅLAND",..: 72 72 72 72 72 72 72 72 72 72 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2       : Factor w/ 315 levels "Abruzzo","Adana, Mersin",..: 34 34 34 166 166 166 166 166 166 166 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts3       : chr [1:1475] "Mittelburgenland" "Nordburgenland" "Südburgenland" "Mostviertel-Eisenwurzen" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ 2016:'data.frame':	1517 obs. of  13 variables:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id          : chr [1:1517] "DE254" "DE255" "DE256" "DE257" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ country     : Factor w/ 37 levels "Albania","Austria",..: 12 12 12 12 12 12 12 12 12 12 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso2        : Factor w/ 37 levels "AL","AT","BE",..: 8 8 8 8 8 8 8 8 8 8 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso3        : Factor w/ 37 levels "ALB","AUT","BEL",..: 8 8 8 8 8 8 8 8 8 8 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ country_code: int [1:1517] 276 276 276 276 276 276 276 276 276 276 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0_id    : Factor w/ 37 levels "AL","AT","BE",..: 8 8 8 8 8 8 8 8 8 8 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1_id    : Factor w/ 124 levels "AL0","AT1","AT2",..: 14 14 14 14 14 14 14 14 14 14 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2_id    : Factor w/ 328 levels "AL01","AL02",..: 54 54 54 54 52 52 52 52 52 52 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts3_id    : chr [1:1517] "DE254" "DE255" "DE256" "DE257" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0       : Factor w/ 37 levels "Albania","Austria",..: 12 12 12 12 12 12 12 12 12 12 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1       : Factor w/ 124 levels "AKDENIZ","ÅLAND",..: 12 12 12 12 12 12 12 12 12 12 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2       : Factor w/ 327 levels "Abruzzo","Adana, Mersin",..: 161 161 161 161 186 186 186 186 186 186 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts3       : chr [1:1517] "Nürnberg, Kreisfreie Stadt" "Schwabach, Kreisfreie Stadt" "Ansbach, Landkreis" "Erlangen-Höchstadt" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ 2021:'data.frame':	1507 obs. of  13 variables:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id          : chr [1:1507] "DE254" "DE255" "DE256" "DE257" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ country     : chr [1:1507] "Germany" "Germany" "Germany" "Germany" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso2        : chr [1:1507] "DE" "DE" "DE" "DE" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso3        : chr [1:1507] "DEU" "DEU" "DEU" "DEU" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ country     : Factor w/ 37 levels "Albania","Austria",..: 12 12 12 12 7 7 7 7 7 12 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso2        : Factor w/ 37 levels "AL","AT","BE",..: 8 8 8 8 7 7 7 7 7 8 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ iso3        : Factor w/ 37 levels "ALB","AUT","BEL",..: 8 8 8 8 7 7 7 7 7 8 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ country_code: int [1:1507] 276 276 276 276 203 203 203 203 203 276 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0_id    : chr [1:1507] "DE" "DE" "DE" "DE" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1_id    : chr [1:1507] "DE2" "DE2" "DE2" "DE2" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2_id    : chr [1:1507] "DE25" "DE25" "DE25" "DE25" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0_id    : Factor w/ 37 levels "AL","AT","BE",..: 8 8 8 8 7 7 7 7 7 8 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1_id    : Factor w/ 124 levels "AL0","AT1","AT2",..: 14 14 14 14 12 12 12 12 12 13 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2_id    : Factor w/ 328 levels "AL01","AL02",..: 54 54 54 54 43 43 44 44 45 46 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts3_id    : chr [1:1507] "DE254" "DE255" "DE256" "DE257" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0       : chr [1:1507] "Germany" "Germany" "Germany" "Germany" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1       : chr [1:1507] "Bayern" "Bayern" "Bayern" "Bayern" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2       : chr [1:1507] "Mittelfranken" "Mittelfranken" "Mittelfranken" "Mittelfranken" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts0       : Factor w/ 37 levels "Albania","Austria",..: 12 12 12 12 7 7 7 7 7 12 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts1       : Factor w/ 124 levels "Akdeniz","Åland",..: 10 10 10 10 20 20 20 20 20 6 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts2       : Factor w/ 328 levels "Abruzzo","Adana, Mersin",..: 161 161 161 161 113 113 255 255 163 256 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ nuts3       : chr [1:1507] "Nürnberg, Kreisfreie Stadt" "Schwabach, Kreisfreie Stadt" "Ansbach, Landkreis" "Erlangen-Höchstadt" ...</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">namesIT</span><span class="op">)</span></span></span>
