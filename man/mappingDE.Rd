@@ -76,13 +76,9 @@ de <- DE(data = popDE, colID = "code_state",
 mappingDE(data = de, var = "population_2020")
 
 
-  mappingDE(data = de, var = "population_2020", 
+mappingDE(data = de, var = "population_2020", 
             subset = ~I(state == "bayern"))
   
-  
-  mappingDE(data = de, var = "population_2020", 
-            facets =  "state")
-
 }
 
 

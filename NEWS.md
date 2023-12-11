@@ -18,3 +18,5 @@
 
 - Fix messagge from sp
 - remove vignettes
+
+# mapping 1.4.1 (2023 - 12)
