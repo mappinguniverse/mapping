@@ -3,12 +3,13 @@
 
 subset_formula <- function(data, formula = ~I())
 {
+  
 
   if(!inherits(data, "data.frame"))
   {
     data <- data.frame(data)
   }
-  ll <- unlist(model.frame(data = data, formula = formula, na.action = NULL))
+  ll <- unlist(model.frame(data = data, formula = formula))
   return(data[ll,])
 }
 
@@ -21,7 +22,7 @@ add.formula <- function(data, formula = ~I(), names = NULL)
     data <- data.frame(data)
   }
 
-  ll <- model.frame(data = data, formula = formula,drop.unused.levels = FALSE, na.action = NULL)
+  ll <- model.frame(data = data, formula = formula,drop.unused.levels = FALSE, na.action=NULL)
 
   if(!is.null(names))
   {

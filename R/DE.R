@@ -15,6 +15,8 @@ loadCoordDE <- function(unit = c("state","district", "municipal", "municipality"
   file <- paste("de_",unit,".geojson", sep = "")
   nn <- unit
   
+  download <- TRUE
+  
   if(use_cache)
   {
     fl <- list.files(tempdir())
@@ -42,7 +44,7 @@ loadCoordDE <- function(unit = c("state","district", "municipal", "municipality"
     }else{
       if(internet | use_internet)
       {
-        url <- paste("https://raw.githubusercontent.com/dataallaround/geospatial/master/DE/GeoJSON/", file, sep = "")
+        url <- paste("https://raw.githubusercontent.com/mappinguniverse/geospatial/master/DE/GeoJSON/", file, sep = "")
         response <- FALSE
         # resp <- GET(url)
         # response <- http_error(resp)

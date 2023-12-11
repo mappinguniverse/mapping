@@ -1,0 +1,94 @@
+---
+title: "mapping Italy"
+output: 
+  rmarkdown::html_vignette:
+    keep_md: true 
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{mapping Italy}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      collapse = TRUE, 
+                      fig.width = 7, fig.height = 4, fig.align = "center", 
+                      message = FALSE, warning = FALSE)
+```
+
+The CRAN version can be loaded as follows:
+```{r, message = FALSE}
+library('mapping')
+```
+
+or the development version from GitHub:
+
+```{r, message = FALSE, eval=FALSE}
+remotes::install_github('serafinialessio/mapping')
+```
+
+
+The Italian geographical aggregates nomenclature are the following:
+
+| Function argument | Aggregates | Level | 
+------------|------------| -------------|
+| "none" | country | level 0 |
+| "ripartizione" | Italian divisions | level 1 |
+| "regione" | Italian regions | level 2 |
+| "provincia" | Italian municipalities | level 3 |
+| "comune" | Italian districts | level 4 |
+
+where **level 0** is the largest unit (country), and **level 4** the smallest unit.
+
+```{r, echo=FALSE}
+DiagrammeR::grViz("
+  digraph graph2 {
+  
+  graph [layout = dot, rankdir = LR]
+  
+  # node definitions with substituted label text
+  node [shape = oval]
+  a [label = 'country']
+  b [label = 'ripartizione']
+  c [label = 'regione']
+  d [label = 'provincia']
+  e [label = 'comune']
+
+  
+  e -> d -> c -> b -> a
+  }
+  
+  ",height = 100)
+```
+
+The diagram show the hierarchy used in the `IT()` to build the object to map. Smaller aggregate/levels have all the information of the bigger aggregates. For example, if we have "comune", we have also all the information until the first level, "ripartizione".
+
+```{r}
+it_level0 <- loadCoordIT(unit = "none")
+mappingIT(it_level0)
+```
+
+```{r}
+it_level1 <- loadCoordIT(unit = "ripartizione")
+mappingIT(it_level1)
+```
+
+
+```{r}
+it_level2 <- loadCoordIT(unit = "regione")
+mappingIT(it_level2)
+```
+
+```{r}
+it_level3 <- loadCoordIT(unit = "provincia")
+mappingIT(it_level3)
+```
+
+
+```{r}
+it_level4 <- loadCoordIT(unit = "comune")
+mappingIT(it_level4)
+```
+
+Note that, given the government rule, the "provincia" and district may change over the `year`.

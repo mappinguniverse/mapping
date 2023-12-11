@@ -18,6 +18,8 @@ loadCoordFR <- function(unit = c("region"),
   file <- paste("fr_",year,"_",unit,".geojson", sep = "")
   nn <- paste(unit,year,sep = "_")
   
+  download <- TRUE
+  
   if(use_cache)
   {
     fl <- list.files(tempdir())
@@ -45,7 +47,7 @@ loadCoordFR <- function(unit = c("region"),
     }else{
       if(internet | use_internet)
       {
-        url <- paste("https://raw.githubusercontent.com/dataallaround/geospatial/master/FR/GeoJSON/", file, sep = "")
+        url <- paste("https://raw.githubusercontent.com/mappinguniverse/geospatial/master/FR/GeoJSON/", file, sep = "")
         response <- FALSE
         # resp <- GET(url)
         # response <- http_error(resp)

@@ -178,7 +178,7 @@ mapping_tmap <- function(data, var = NULL,
 
         tm <- tm_shape(shp = data) + style + border  + fill + layout + centroids + fill_text + srcAuth + legend
       }
-
+      
       tm
 
     }else{

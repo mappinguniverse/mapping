@@ -24,6 +24,8 @@ loadCoordEU <- function(unit = c("nuts0","nuts1", "nuts2", "nuts3", "urau"),
   file <- paste("eu_",year,"_",unit, "_",scale,"m",".geojson", sep = "")
   nn <- paste(unit,year,sep = "_")
 
+  download <- TRUE
+  
   if(use_cache)
   {
     fl <- list.files(tempdir())
@@ -53,9 +55,9 @@ loadCoordEU <- function(unit = c("nuts0","nuts1", "nuts2", "nuts3", "urau"),
       {
         if(unit == "urau")
         {
-          url <- paste("https://raw.githubusercontent.com/dataallaround/geospatial/master/EU/urau/", file, sep = "")
+          url <- paste("https://raw.githubusercontent.com/mappinguniverse/geospatial/master/EU/urau/", file, sep = "")
         }else{
-          url <- paste("https://raw.githubusercontent.com/dataallaround/geospatial/master/EU/nuts/GeoJSON/", file, sep = "")
+          url <- paste("https://raw.githubusercontent.com/mappinguniverse/geospatial/master/EU/nuts/GeoJSON/", file, sep = "")
         }
         response <- FALSE
         # resp <- GET(url)

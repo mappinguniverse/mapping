@@ -11,6 +11,7 @@ mappingEU <- function(data, var = NULL, colID = NULL,
 
 {
 
+
   check.unit.names = options$check.unit.names
   use_cache = options$use_cache
   use_internet = options$use_internet
@@ -180,8 +181,6 @@ mappingEU <- function(data, var = NULL, colID = NULL,
     # colID <- attributes(data)$colID
 
   }
-
-
 
   if(type == "static")
   {

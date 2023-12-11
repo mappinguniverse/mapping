@@ -32,7 +32,7 @@ mapping(data = NULL, var = NULL, colID = NULL,
 It is a general function to map data. We can externally provide the coordinates with the variable to map, or the coordinates and the data to link.
 
 If coordinates are provided and \code{data} is \code{NULL}, the function map the \code{var} in \code{coordinates}. If \code{data} is not \code{NULL}, then the function link data and coordinates, and the \code{var} is get from the data provided in input.
-If only \code{data} are provided without coordinates, the function search the \code{colID} among the the coordinates dataset provided by \url{https://github.com/dataallaround/geospatial}, to link the ids with coordinates. For search look at \code{SearchNames}
+If only \code{data} are provided without coordinates, the function search the \code{colID} among the the coordinates dataset provided by \url{https://github.com/mappinguniverse/geospatial}, to link the ids with coordinates. For search look at \code{SearchNames}
 
 }
 \value{

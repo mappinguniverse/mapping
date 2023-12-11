@@ -79,38 +79,5 @@ data("popUK")
 
 uk <- UK(data = popUK, unit = "county", matchWith = "code", check.unit.names = FALSE)
 
-###############
-#   Statics   #
-###############
-
-mappingUK(data = uk, var = "population")
-
-\donttest{
-  mappingUK(data = uk, var = "population", subset = ~I(country == "england"))
-  
-  
-  mappingUK(data = uk, var = "population", facets =  "country")
-  
-  mappingUK(data = uk, var = "population",
-            aggregation_unit = "country",
-            aggregation_fun = function(x) sum(x, na.rm = TRUE))
-}
-
-
-###############
-# Interactive #
-###############
-
-mappingUK(data = uk, var = "population", type = "interactive")
-
-\donttest{
-
-  
-  mappingUK(data = uk, var = "population", subset = ~I(country == "england"), type = "interactive")
-  
-  mappingUK(data = uk, var = "population",
-            aggregation_unit = "country",
-            aggregation_fun = function(x) sum(x, na.rm = TRUE), type = "interactive")
-}
 
 }

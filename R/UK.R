@@ -19,6 +19,8 @@ loadCoordUK <- function(unit = c("country","county"),
   file <- paste("uk_",year,"_",unit, "_",scale,"m",".geojson", sep = "")
   nn <- paste(unit,year,sep = "_")
   
+  download <- TRUE
+  
   if(use_cache)
   {
     fl <- list.files(tempdir())
@@ -46,7 +48,7 @@ loadCoordUK <- function(unit = c("country","county"),
     }else{
       if(internet | use_internet)
       {
-        url <- paste("https://raw.githubusercontent.com/dataallaround/geospatial/master/UK/GeoJSON/", file, sep = "")
+        url <- paste("https://raw.githubusercontent.com/mappinguniverse/geospatial/master/UK/GeoJSON/", file, sep = "")
         scaleponse <- FALSE
         # scalep <- GET(url)
         # scaleponse <- http_error(scalep)

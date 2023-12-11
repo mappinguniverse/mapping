@@ -54,7 +54,7 @@ library('mapping')
 or the development version from GitHub:
 
 ```{r, message = FALSE, eval=FALSE}
-remotes::install_github('dataallaround/mapping')
+remotes::install_github('serafinialessio/mapping')
 ```
 
 The population data, available in the package, will be used to describe the package features 
@@ -91,7 +91,7 @@ Coordinates can be separately downloaded using this specific functions
 | Italy | `loadCoordIT()` |
 | United States of America | `loadCoordUS()`|
 
-Coordinates are download from the GitHub repository \url{https://github.com/dataallaround/geospatial}, which provides .geojson and .RData files with coordinates, which return an object of class `sf`.
+Coordinates are download from the GitHub repository \url{https://github.com/mappinguniverse/geospatial}, which provides .geojson and .RData files with coordinates, which return an object of class `sf`.
 
 ```{r}
 coord_eu <- loadCoordEU(unit = "nuts0")

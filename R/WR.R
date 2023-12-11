@@ -17,7 +17,7 @@ loadCoordWR <- function(unit = c("country", "nato", "ocde", "continent", "region
   nn <- paste("world_",unit,"_", res,sep = "")
 
 
-
+  download <- TRUE
   if(use_cache)
   {
     fl <- list.files(tempdir())
@@ -45,7 +45,7 @@ if(download){
 
     if(internet | use_internet)
     {
-      url <- paste("https://raw.githubusercontent.com/dataallaround/geospatial/master/world/GeoJSON/", file, sep = "")
+      url <- paste("https://raw.githubusercontent.com/mappinguniverse/geospatial/master/world/GeoJSON/", file, sep = "")
       response <- FALSE
 
       if(!response)

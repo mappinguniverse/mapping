@@ -47,7 +47,7 @@ EU(data, colID = NULL,
   \item{dir}{local directory in which shape files are stored}
   \item{use_cache}{a logical value indicating whether use the cache}
   \item{print}{a logical value indicating whether print the nomatched names}
-\item{use_internet}{a logical value indicating wheter the coordinates are downloaded from \url{https://github.com/dataallaround/geospatial}. If \code{FALSE} the maps downloaded during package installation will be used.}
+\item{use_internet}{a logical value indicating wheter the coordinates are downloaded from \url{https://github.com/mappinguniverse/geospatial}. If \code{FALSE} the maps downloaded during package installation will be used.}
     \item{crs}{coordinate reference system. Look at \code{\link{st_crs}}}
 
 

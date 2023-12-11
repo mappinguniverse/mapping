@@ -85,7 +85,7 @@ if(download)
 
     if(internet | use_internet)
     {
-      url <- paste("https://raw.githubusercontent.com/dataallaround/geospatial/master/US/GeoJSON/", file, sep = "")
+      url <- paste("https://raw.githubusercontent.com/mappinguniverse/geospatial/master/US/GeoJSON/", file, sep = "")
       response <- FALSE
       # resp <- GET(url)
       # response <- http_error(resp)
