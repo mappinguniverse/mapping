@@ -128,8 +128,8 @@ following:</p>
 </table>
 <p>where <strong>level 0</strong> is the largest unit (country), and
 <strong>level 4</strong> the smallest unit.</p>
-<div id="htmlwidget-b60775ed602b0cbf95c6" style="width:672px;height:100px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b60775ed602b0cbf95c6">{"x":{"diagram":"\n  digraph graph2 {\n  \n  graph [layout = dot, rankdir = LR]\n  \n  # node definitions with substituted label text\n  node [shape = oval]\n  a [label = \"country\"]\n  b [label = \"ripartizione\"]\n  c [label = \"regione\"]\n  d [label = \"provincia\"]\n  e [label = \"comune\"]\n\n  \n  e -> d -> c -> b -> a\n  }\n  \n  ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><p>The diagram show the hierarchy used in the <code><a href="../reference/IT.html">IT()</a></code> to build
+<div id="htmlwidget-dc3ad6768771b21b1ad1" style="width:672px;height:100px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-dc3ad6768771b21b1ad1">{"x":{"diagram":"\n  digraph graph2 {\n  \n  graph [layout = dot, rankdir = LR]\n  \n  # node definitions with substituted label text\n  node [shape = oval]\n  a [label = \"country\"]\n  b [label = \"ripartizione\"]\n  c [label = \"regione\"]\n  d [label = \"provincia\"]\n  e [label = \"comune\"]\n\n  \n  e -> d -> c -> b -> a\n  }\n  \n  ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><p>The diagram show the hierarchy used in the <code><a href="../reference/IT.html">IT()</a></code> to build
 the object to map. Smaller aggregate/levels have all the information of
 the bigger aggregates. For example, if we have “comune”, we have also
 all the information until the first level, “ripartizione”.</p>
