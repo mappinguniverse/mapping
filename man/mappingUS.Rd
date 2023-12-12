@@ -91,9 +91,10 @@ mappingUS(data = us, var = "population",
 mappingUS(data = us, var = "population",
           subset = ~I(id == "california" | id == "texas"), facets = "id")
 
+\donttest{
 mappingUS(data = us, var = "population", typeStatic = "choro.cart")
 
-\donttest{
+
 ###############
 # Interactive #
 ###############

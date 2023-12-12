@@ -41,8 +41,6 @@ getNamesIT <- function(year = c("2021","2020","2019","2018", "2017"),
     }else{
       out <- (dt[c("ripartizione","regione", "code_ripartizione", "code_regione")])
       out <- distinct(out)
-      #out$ripartizione <- (out$ripartizione)
-      #out$code_ripartizione <- (out$code.ripartizione)
     }
 
 
@@ -247,7 +245,6 @@ getNamesDE <- function(unit = c("state","district", "municipal", "municipality")
       
     }else{
       out <- (dt[[unit]][c("state","code_state", "code" )])
-      # out <- unique(out)
     }
     
   }else if(unit == "district")

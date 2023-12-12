@@ -211,9 +211,6 @@ mapping.options.reset <- function()
   text.shadow = FALSE,
   text.alpha =  NA,
 
-  # bubbles.color = "white",
-  # bubbles.scale = 4/3,
-
   credits.source = NULL,
   credits.author = NULL,
   credits.size = 0.7,

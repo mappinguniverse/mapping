@@ -87,8 +87,6 @@ if(download)
     {
       url <- paste("https://raw.githubusercontent.com/mappinguniverse/geospatial/master/US/GeoJSON/", file, sep = "")
       response <- FALSE
-      # resp <- GET(url)
-      # response <- http_error(resp)
 
       if(!response)
       {
@@ -108,7 +106,6 @@ if(download)
 
 
   coord <- st_transform(coord, crs = crs)
-  # coord <- suppressMessages(suppressWarnings((st_buffer(coord,0))))
   coord <- st_make_valid(coord)
   class(coord) <- c(class(coord),"US")
   attributes(coord)$unit <- unit
@@ -471,13 +468,10 @@ US <- function(data, colID = NULL,
         colID <- aggregation_unit
         colName <- aggregation_unit
 
-        # attributes(data)$unit <- unit
-        # attributes(data)$colID <- colID
 
       }else{
         if(isFALSE(show_us))
         {
-          #out <- suppressMessages(left_join(coord, out[,-ncol(out), drop = TRUE]))
           out <- out[out[,colName, drop = TRUE] %in% data[,colName],]
 
         }else{

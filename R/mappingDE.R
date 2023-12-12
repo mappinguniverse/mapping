@@ -31,10 +31,7 @@ mappingDE <- function(data, var = NULL, colID = NULL,
   
   if(!inherits(data, "DE"))
   {
-    # if(is.null(year))
-    # {
-    #   stop("year must be provided.")
-    # }
+
     data <- data.frame(data, check.names = FALSE)
     
     unit <- match.arg(unit, choices = eval(formals(mappingDE)$unit))
@@ -58,7 +55,6 @@ mappingDE <- function(data, var = NULL, colID = NULL,
       {
         stop("subset must be a formula.")
       }
-      #data <- data[data[[unitubset]] %in% subset,]
       data <- subset_formula(data = data, formula = subset)
     }
     
@@ -71,8 +67,6 @@ mappingDE <- function(data, var = NULL, colID = NULL,
         stop("aggregation_fun must be provided to aggregate data")
       }
       
-      
-      #data <- st_buffer(data, 0)
       
       if(any(aggregation_unit%in%c("state","district", "municipal", "municipality")))
       {
@@ -92,11 +86,7 @@ mappingDE <- function(data, var = NULL, colID = NULL,
           
           colnames(data)[1] <- aggregation_unit
           facets_join <- NULL
-          # data[,aggregation_unit] <- tolower(data[,aggregation_unit, drop = TRUE])
-          # nm[,aggregation_unit] <- as.character(tolower(nm[,aggregation_unit, drop = TRUE]))
-          # data[,aggregation_unit] = as.character(data[,aggregation_unit, drop = TRUE])
-          # data <- suppressWarnings(left_join(data, nm, aggregation_unit))
-          
+
         }else{
           
           if(!any(facets %in% colnames(data)))
@@ -155,9 +145,7 @@ mappingDE <- function(data, var = NULL, colID = NULL,
       colID <- aggregation_unit
       
     }
-    
-    # attributes(data)$unit <- unit
-    # attributes(data)$colID <- colID
+
   }
   
   
@@ -218,18 +206,6 @@ mappingDE <- function(data, var = NULL, colID = NULL,
                              options = options)
     }
     
-    
-    
-    
-    # if(type == "tmap")
-    # {
-    #
-    #   mapping_tmap_interactive(data = data, var = var, colID = colID, options = options, add_text = add_text)
-    #
-    # }else if(type == "mapview")
-    # {
-    #   mapping_mapview(data = data, var = var, colID = colID, options = options)
-    # }
     
   }
   

@@ -34,10 +34,7 @@ mappingEU <- function(data, var = NULL, colID = NULL,
 
   if(!inherits(data, "EU"))
   {
-    # if(is.null(year))
-    # {
-    #   stop("year must be provided.")
-    # }
+
 
     data <- data.frame(data, check.names = FALSE)
 
@@ -53,11 +50,6 @@ mappingEU <- function(data, var = NULL, colID = NULL,
       year = "2018"
     }
 
-
-    # if(matchWith == "nuts")
-    # {
-    #   matchWith <- unit
-    # }
 
     data <- EU(data = data, colID = colID, unit = unit, year = year, subset = subset, show_eu = show_eu,
                matchWith = matchWith, scale = scale, check.unit.names = check.unit.names,
@@ -110,10 +102,6 @@ mappingEU <- function(data, var = NULL, colID = NULL,
 
         colnames(data)[1] <- aggregation_unit
         facets_join <- NULL
-        # data[,aggregation_unit] <- tolower(data[,aggregation_unit, drop = TRUE])
-        # nm[,aggregation_unit] <- as.character(tolower(nm[,aggregation_unit, drop = TRUE]))
-        # data[,aggregation_unit] = as.character(data[,aggregation_unit, drop = TRUE])
-        # data <- suppressWarnings(left_join(data, nm,aggregation_unit))
 
         }else{
           if(!any(facets %in% colnames(data)))
@@ -177,8 +165,6 @@ mappingEU <- function(data, var = NULL, colID = NULL,
       colID <- aggregation_unit
 
     }
-    # unit <- attributes(data)$unit
-    # colID <- attributes(data)$colID
 
   }
 
@@ -231,18 +217,6 @@ mappingEU <- function(data, var = NULL, colID = NULL,
                              colID = colID,
                              options = options)
     }
-
-
-
-    # if(type == "tmap")
-    # {
-    #
-    #   mapping_tmap_interactive(data = data, var = var, colID = colID, options = options, add_text = add_text)
-    #
-    # }else if(type == "mapview")
-    # {
-    #   mapping_mapview(data = data, var = var, colID = colID, options = options )
-    # }
 
   }
 }

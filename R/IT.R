@@ -57,8 +57,6 @@ if(download){
   {
     url <- paste("https://raw.githubusercontent.com/mappinguniverse/geospatial/master/IT/GeoJSON/", file, sep = "")
     response <- FALSE
-    # resp <- GET(url)
-    # response <- http_error(resp)
 
     if(!response)
     {
@@ -81,7 +79,6 @@ if(download){
 
 
   coord <- st_transform(coord, crs = crs)
-  # coord <- suppressMessages(suppressWarnings((st_buffer(coord,0))))
   coord <- st_make_valid(coord)
   class(coord) <- c(class(coord),"IT")
   attributes(coord)$unit <- unit
@@ -370,11 +367,7 @@ IT <- function(data, colID = NULL,
                          by = list(var = out[, aggregation_unit, drop = TRUE]), FUN = aggregation_fun)
         colnames(out)[1] <- aggregation_unit
         facets_join <- NULL
-        # out[,aggregation_unit] <- tolower(out[,aggregation_unit, drop = TRUE])
-        # nm[,aggregation_unit] <- as.character(tolower(nm[,aggregation_unit, drop = TRUE]))
-        # out[,aggregation_unit] = as.character(out[,aggregation_unit, drop = TRUE])
-        # out <- suppressWarnings(left_join(out, nm,aggregation_unit))
-        #
+
         }else{
 
 
@@ -435,13 +428,10 @@ IT <- function(data, colID = NULL,
       colID <- aggregation_unit
       colName <- aggregation_unit
 
-      # attributes(data)$unit <- unit
-      # attributes(data)$colID <- colID
-
     }else{
       if(isFALSE(show_it))
       {
-        #out <- suppressMessages(left_join(coord, out[,-ncol(out), drop = TRUE]))
+
         out <- out[out[,colName, drop = TRUE] %in% data[,colName],]
 
       }else{

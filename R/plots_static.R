@@ -4,7 +4,6 @@ mapping_tmap <- function(data, var = NULL,
 {
 
   suppressMessages(tmap_mode("plot"))
-  #crs <- options$crs
   legend.outside.size <- options$legend.width
 
   layout <- tm_layout(main.title = options$title, main.title.size = options$title.size,
@@ -40,15 +39,6 @@ mapping_tmap <- function(data, var = NULL,
   }
 
 
-  # labs <- options$labels
-  #
-  # if(is.null(options$labels))
-  # {
-  #   labs <- ""
-  # }
-
-  # browser()
-  # text <- tm_text(labs, size = options$labels.size)
 
   if(!is.null(options$credits.source) & !is.null(options$credits.author))
   {
@@ -73,11 +63,6 @@ mapping_tmap <- function(data, var = NULL,
                         fontface = options$credits.fontface,
                         position = options$credits.position)
 
-  # if(!is.null(crs))
-  # {
-  #   data <- st_transform(data, crs = crs)
-  #   st_is_valid(data)
-  # }
 
   if(is.null(var))
   {
@@ -183,11 +168,6 @@ mapping_tmap <- function(data, var = NULL,
 
     }else{
 
-      # if(nvars != length(palette))
-      # {
-      #   stop("lenght var and lenght must be the same")
-      # }
-
       legend <- tm_legend(legend.show = options$legend.show,
                           legend.only = options$legend.only, legend.position = options$legend.position, legend.title.color = options$legend.title.color,
                           legend.outside = options$legend.outside,legend.width = options$legend.width, legend.text.size = options$legend.text.size,
@@ -275,7 +255,6 @@ mapping_tmap <- function(data, var = NULL,
 
       }
 
-      #map_ls <- lapply(1:length(var), function(i) tm_shape(shp = data) +  style + border +)
       do.call("tmap_arrange", map_ls)
 
     }
@@ -292,13 +271,6 @@ mapping_tmap_US <- function(data, var = NULL, add_text = NULL,
 
 
   suppressMessages(tmap_mode("plot"))
-
-  #crs <- options$crs
-
-  # if(!is.null(crs))
-  # {
-  #   data <- st_transform(data, crs = crs)
-  # }
 
 
   if(!is.null(options$credits.source) & !is.null(options$credits.author))
@@ -454,10 +426,6 @@ mapping_tmap_US <- function(data, var = NULL, add_text = NULL,
       var.text <- colnames(data)[var.id]
     }
 
-    # min <- min(data[,var, drop = TRUE])
-    # max <- max(data[,var, drop = TRUE])
-
-
 
     fill <- tm_fill(col = var, n = options$nclass, palette = palette, style = options$col.style,
                     breaks = options$breaks, interval.closure = options$interval.closure,
@@ -536,14 +504,6 @@ mapping_tmap_US <- function(data, var = NULL, add_text = NULL,
   }else if(length(var) == 2)
   {
 
-    # if(is.character(data[var]) | is.factor(data[var]))
-    # {
-    #   palette = options$palette.cat
-    # }else{
-    #   palette = options$palette.cont
-    # }
-
-
     var.text <- options$legend.title
     var.id <- var
 
@@ -559,9 +519,6 @@ mapping_tmap_US <- function(data, var = NULL, add_text = NULL,
     {
       var.text <- colnames(data)[var.id]
     }
-
-    # min <- min(data[,var, drop = TRUE])
-    # max <- max(data[,var, drop = TRUE])
 
 
     alk <- list(alk1 = viewport(x = 0.3, y = 0.6, width = 0.15, height = 0.15),
@@ -586,7 +543,6 @@ mapping_tmap_US <- function(data, var = NULL, add_text = NULL,
     {
       free_scale <- TRUE
     }
-#fill <- vector("list", 2)
 
     if(free_scale)
     {
@@ -702,22 +658,6 @@ mapping_tmap_US <- function(data, var = NULL, add_text = NULL,
       alk <- viewport(x = 0.15, y = 0.15, width = 0.3, height = 0.3)
       haw <- viewport(x = 0.4, y = 0.1, width = 0.2, height = 0.1)
 
-      # fill <- tm_fill(col = fl_1[alhw], palette = palette1, style = ifelse(options$col.style == "log10", "cont", options$col.style),
-      #                 breaks = other1$gps$plot1$tmLayer2$fill.legend.values, interval.closure = options$interval.closure,
-      #                 textNA = options$NA.text, colorNA = options$NA.color, labels = other1$gps$plot1$tmLayer2$fill.legend.labels,
-      #                 title = var.text, legend.is.portrait = options$legend.portrait)
-      #
-      # continent1 <- tm_shape(data[alhw,],  projection=2163) + style + border + fill +  layout + legend + srcAuth + centroids + fill_text
-
-      # fill <- tm_fill(col = var[2], palette = palette2, style = ifelse(options$col.style == "log10", "cont", options$col.style),
-      #                 breaks = other2$gps$plot1$tmLayer2$fill.legend.values, interval.closure = options$interval.closure,
-      #                 textNA = options$NA.text, colorNA = options$NA.color, labels = other2$gps$plot1$tmLayer2$fill.legend.labels,
-      #                 title = var.text, legend.is.portrait = options$legend.portrait)
-
-      # cont <- other1
-      # cont$shps$ddt <- data[alhw,]
-      # cont$gps$plot1$tmLayer2$fill <- other1$gps$plot1$tmLayer2$fill[1:nrow(data)]
-      # cont$gps$plot1$tmLayer2$idnames$fill <- var[1]
       fill <- tm_fill(col = var[1], palette = palette1, style = ifelse(options$col.style == "log10", "cont", options$col.style),
                       breaks = other1$gps$plot1$tmLayer2$fill.legend.values, interval.closure = options$interval.closure,
                       textNA = options$NA.text, colorNA = options$NA.color, labels = other1$gps$plot1$tmLayer2$fill.legend.labels,
@@ -735,10 +675,6 @@ mapping_tmap_US <- function(data, var = NULL, add_text = NULL,
       continent2 <- tm_shape(data[alhw,],  projection=2163) + style + border + fill +  layout + legend + srcAuth + centroids + fill_text
       continent2$tm_fill$breaks <- other2$gps$plot1$tmLayer2$fill.legend.values
       continent2$tm_fill$labels <- other2$gps$plot1$tmLayer2$fill.legend.labels
-      # as <- print(continent2)
-      # as$gps$plot1$tmLayer2$fill <- fl_2[alhw]
-      #tmap:::print.tmap(as)
-
 
       map_ls[[1]] <- list(continent1, alaska1,hawaii1)
       map_ls[[2]] <- list(continent2, alaska2,hawaii2)
@@ -760,54 +696,22 @@ mapping_tmap_US <- function(data, var = NULL, add_text = NULL,
     if(length(map_ls[[1]][[2]]$tm_shape$shp$state_id) != 0)
     {
       print(map_ls[[1]][[2]], vp = alk1)
-      #print(alaska2, vp = alk[[2]])
     }
     if(length(map_ls[[1]][[3]]$tm_shape$shp$state_id) != 0)
     {
       print(map_ls[[1]][[3]], vp = haw1)
-      #print(hawaii2, vp = haw[[2]])
     }
 
     if(length(map_ls[[2]][[2]]$tm_shape$shp$state_id) != 0)
     {
       print(map_ls[[2]][[2]], vp = alk2)
-      #print(alaska2, vp = alk[[2]])
     }
     if(length(map_ls[[2]][[3]]$tm_shape$shp$state_id) != 0)
     {
       print(map_ls[[2]][[3]], vp = haw2)
-      #print(hawaii2, vp = haw[[2]])
     }
 
-    # fill_al <- tm_fill(col = other$gps$plot1$tmLayer2$fill[al], legend.is.portrait = options$legend.portrait)
-    # alaska <- tm_shape(data[al,], projection = 3338) + style + border + fill_al + tm_layout(nn_al, legend.show = FALSE, bg.color = NA, title.size = 0.8, frame = FALSE)  + centroids_al + fill_text_al
-    #
-    # fill_hw <- tm_fill(col = other$gps$plot1$tmLayer2$fill[hw], legend.is.portrait = options$legend.portrait)
-    # hawaii <- tm_shape(data[hw,], projection = 3759) + style + border + fill_hw + tm_layout(nn_hw,legend.show = FALSE, bg.color=NA, title.position = c("LEFT", "BOTTOM"), title.size = 0.8, frame=FALSE)  + centroids_hw + fill_text_hw
-    #
-    #
-    # fill_al2 <- tm_fill(col = other$gps$plot2$tmLayer2$fill[al], legend.is.portrait = options$legend.portrait)
-    # alaska2 <- tm_shape(data[al,], projection = 3338) + style + border + fill_al2 + tm_layout(nn_al, legend.show = FALSE, bg.color = NA, title.size = 0.8, frame = FALSE)  + centroids_al + fill_text_al
-    #
-    # fill_hw2 <- tm_fill(col = other$gps$plot2$tmLayer2$fill[hw], legend.is.portrait = options$legend.portrait)
-    # hawaii2 <- tm_shape(data[hw,], projection = 3759) + style + border + fill_hw2 + tm_layout(nn_hw,legend.show = FALSE, bg.color=NA, title.position = c("LEFT", "BOTTOM"), title.size = 0.8, frame=FALSE)  + centroids_hw + fill_text_hw
-    #
-    # alk2 <- viewport(x = 0.3, y = 0.1, width = 0.15, height = 0.15)
-    # haw2 <- viewport(x = 0.4, y = 0.1, width = 0.1, height = 0.05)
-    #
-    #
-    # alk1 <- viewport(x = 0.3, y = 0.6, width = 0.15, height = 0.15)
-    # haw1 <- viewport(x = 0.4, y = 0.6, width = 0.1, height = 0.05)
-    #
-    #
-    #
-    # fill <- tm_fill(col = var, palette = palette, style = ifelse(options$col.style == "log10", "cont", options$col.style),
-    #                 breaks = other$gps$plot1$tmLayer2$fill.legend.values, interval.closure = options$interval.closure,
-    #                 textNA = options$NA.text, colorNA = options$NA.color, labels = other$gps$plot1$tmLayer2$fill.legend.labels,
-    #                 title = var.text, legend.is.portrait = options$legend.portrait)
-    #
-    # continent <- tm_shape(data[alhw,],  projection=2163) + style + border + fill +  layout + legend + srcAuth + centroids + fill_text
-
+    
 
   }
 
@@ -909,7 +813,6 @@ mapping_choro <- function(data, var = NULL,
         palette <- options$palette.cont
       }
       a <- lapply(1:length(var), function(xx) {
-        #choroLayer(data, var = var[xx], nclass = options$nclass, col = mapPalette(type = options$palette[xx], nclass = options$nclass) )
         choroLayer(data, var = var[xx], nclass = options$nclass, col = mapPalette(type = palette[xx], nclass = options$nclass),
                    breaks = options$breaks, legend.pos = lgpos,
                    lwd = options$border.lwd, border = options$border.col,
@@ -919,17 +822,6 @@ mapping_choro <- function(data, var = NULL,
                    legend.values.cex = options$legend.text.size, legend.values.rnd = options$legend.digits,
                    legend.frame = options$legend.frame)
 
-        # if(!is.null(options$labels))
-        # {
-        #   labelLayer(
-        #     x = data,
-        #     txt = options$labels,
-        #     col= options$labels.color,
-        #     cex = options$labels.size,
-        #     overlap = FALSE,
-        #     show.lines = FALSE
-        #   )
-        # }
 
         layoutLayer(title = title, coltitle = options$title.color, col = "white",
                     postitle = options$title.position,
@@ -986,13 +878,6 @@ mapping_choro <- function(data, var = NULL,
 mapping_typo <- function(data, var = NULL,
                          options = mapping.options())
 {
-
-  # crs <- options$crs
-  #
-  # if(!is.null(crs))
-  # {
-  #   data <- st_transform(data, crs = crs)
-  # }
 
   oldpar <- par(no.readonly = TRUE)
   on.exit(par(oldpar))
@@ -1072,7 +957,6 @@ mapping_typo <- function(data, var = NULL,
 
       lapply(1:length(var), function(xx)
       {
-        #typoLayer(x = data, var = var[xx], col = mapPalette(type = options$palette[xx], nclass = options$nclass))
         modal <- nlevels(factor(data[,var[xx], drop = TRUE]))
 
         typoLayer(data, var = var[xx], col = mapPalette(type = palette[xx], nclass = modal),
@@ -1096,12 +980,6 @@ mapping_typo <- function(data, var = NULL,
 
     }else if(length(var) == 1)
     {
-      # if(is.character(data[var]) | is.factor(data[var]))
-      # {
-      #   palette = options$palette.cat
-      # }else{
-      #   palette = options$palette.cont
-      # }
 
       modal <- nlevels(factor(data[,var, drop = TRUE]))
       palette <- mapPalette(type = options$palette.cat, nclass = modal)
@@ -1130,12 +1008,6 @@ mapping_bar <- function(data, var = NULL,
                         options = mapping.options())
 {
 
-  # crs <- options$crs
-  #
-  # if(!is.null(crs))
-  # {
-  #   data <- st_transform(data, crs = crs)
-  # }
 
   oldpar <- par(no.readonly = TRUE)
   on.exit(par(oldpar))

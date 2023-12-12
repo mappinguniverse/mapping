@@ -38,8 +38,6 @@ mappingWR <- function(data, var = NULL, colID = NULL,
 
     data <- data.frame(data, check.names = FALSE)
 
-    #unit <- match.arg(unit, choices = eval(formals(mappingEU)$unit))
-    #year <- match.arg(year, choices = eval(formals(mappingEU)$year))
     res <- match.arg(res, choices = eval(formals(mappingWR)$res))
     matchWith <- match.arg(matchWith, choices = eval(formals(mappingWR)$matchWith))
 
@@ -76,15 +74,6 @@ mappingWR <- function(data, var = NULL, colID = NULL,
         stop("aggregation_fun must be provided to aggregate data")
       }
 
-      # if(is.null(aggregation_unit) | !is.null(facets))
-      # {
-      #   aggregation_unit <- facets
-      # }
-
-      #data <- st_buffer(data, 0)
-
-      #year <- attributes(data)$year
-
       if(any(aggregation_unit %in% c("country", "nato", "ocde",
                                  "continent", "region", "subregion", "region_wb",
                                  "type_income", "type_economy")))
@@ -106,10 +95,7 @@ mappingWR <- function(data, var = NULL, colID = NULL,
 
       colnames(data)[1] <- aggregation_unit
       facets_join <- NULL
-      # data[,aggregation_unit] <- tolower(data[,aggregation_unit, drop = TRUE])
-      # nm[,aggregation_unit] <- as.character(tolower(nm[,aggregation_unit, drop = TRUE]))
-      # data[,aggregation_unit] = as.character(data[,aggregation_unit, drop = TRUE])
-      # data <- suppressWarnings(left_join(data, nm,aggregation_unit))
+
       }else{
 
         if(!any(facets %in% colnames(data)))
@@ -172,8 +158,6 @@ mappingWR <- function(data, var = NULL, colID = NULL,
 
   }
 
-    # attributes(data)$unit <- unit
-    # attributes(data)$colID <- colID
 
   }
 
@@ -228,17 +212,6 @@ mappingWR <- function(data, var = NULL, colID = NULL,
                              options = options)
     }
 
-
-
-    # if(type == "tmap")
-    # {
-    #
-    #   mapping_tmap_interactive(data = data, var = var, colID = colID, options = options, add_text = add_text )
-    #
-    # }else if(type == "mapview")
-    # {
-    #   mapping_mapview(data = data, var = var, colID = colID, options = options)
-    # }
 
   }
 

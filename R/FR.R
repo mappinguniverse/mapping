@@ -49,8 +49,6 @@ loadCoordFR <- function(unit = c("region"),
       {
         url <- paste("https://raw.githubusercontent.com/mappinguniverse/geospatial/master/FR/GeoJSON/", file, sep = "")
         response <- FALSE
-        # resp <- GET(url)
-        # response <- http_error(resp)
         
         if(!response)
         {
@@ -75,7 +73,6 @@ loadCoordFR <- function(unit = c("region"),
   
   
   coord <- st_transform(coord, crs = crs)
-  # coord <- suppressMessages(suppressWarnings((st_buffer(coord,0))))
   coord <- st_make_valid(coord)
   class(coord) <- c(class(coord),"FR")
   attributes(coord)$unit <- unit
@@ -261,11 +258,7 @@ FR <- function(data, colID = NULL,
                          by = list(var = out[, aggregation_unit, drop = TRUE]), FUN = aggregation_fun)
         colnames(out)[1] <- aggregation_unit
         facets_join <- NULL
-        # out[,aggregation_unit] <- stri_trans_tolower(out[,aggregation_unit, drop = TRUE])
-        # nm[,aggregation_unit] <- as.character(stri_trans_tolower(nm[,aggregation_unit, drop = TRUE]))
-        # out[,aggregation_unit] = as.character(out[,aggregation_unit, drop = TRUE])
-        # out <- suppressWarnings(left_join(out, nm,aggregation_unit))
-        
+
       }else{
         
         if(!any(facets %in% colnames(out)))
@@ -324,8 +317,6 @@ FR <- function(data, colID = NULL,
     
     colID <- aggregation_unit
     colName <- aggregation_unit
-    # attributes(data)$unit <- unit
-    # attributes(data)$colID <- colID
     
   }else{
     

@@ -106,10 +106,7 @@ mappingUS <- function(data, var = NULL, colID = NULL,
                             by = list(var = data[, aggregation_unit, drop = TRUE]), FUN = aggregation_fun)
           colnames(data)[1] <- aggregation_unit
           facets_join <- NULL
-          # data[,aggregation_unit] <- tolower(data[,aggregation_unit, drop = TRUE])
-          # nm[,aggregation_unit] <- as.character(tolower(nm[,aggregation_unit, drop = TRUE]))
-          # data[,aggregation_unit] = as.character(data[,aggregation_unit, drop = TRUE])
-          # data <- suppressWarnings(left_join(data, nm,aggregation_unit))
+          
         }else{
 
           if(!any(facets %in% colnames(data)))
@@ -170,8 +167,6 @@ mappingUS <- function(data, var = NULL, colID = NULL,
 
     }
 
-    # attributes(data)$unit <- unit
-    # attributes(data)$colID <- colID
 
   }
 
@@ -234,17 +229,6 @@ mappingUS <- function(data, var = NULL, colID = NULL,
                              options = options)
     }
 
-
-
-    # if(type == "tmap")
-    # {
-    #
-    #   mapping_tmap_interactive(data = data, var = var, colID = colID, options = options, add_text = add_text )
-    #
-    # }else if(type == "mapview")
-    # {
-    #   mapping_mapview(data = data, var = var, colID = colID, options = options )
-    # }
 
   }
 
